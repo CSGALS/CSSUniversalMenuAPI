@@ -10,6 +10,10 @@ using CSSUniversalMenuAPI.Extensions;
 
 namespace ProofOfConcepts;
 
+/// <summary>
+/// This is a sample implementation using the console to act as a proof of concept or reference.
+/// Mirrors SourceMod menus
+/// </summary>
 internal class NumberKeysMenuAPI : ISampleMenu
 {
 	internal Dictionary<CCSPlayerController, NumbersPlayerMenuState> PlayerMenuStates { get; } = new();
@@ -106,7 +110,9 @@ internal class NumberKeysMenuAPI : ISampleMenu
 				for (int i = 0; i < itemsInPage; i++)
 				{
 					var item = focusedMenu.Items[itemsStart + i];
-					writeLine($"{i + 1}. {item}", background: !item.Enabled);
+					writeLine($"{i + 1}. {item.Title}", background: !item.Enabled);
+					if (item.Subtitle is not null)
+						writeLine($"  {item.Subtitle}", background: true);
 				}
 
 				bool showBackButton = itemsStart == 0 && focusedMenu.PlayerCanClose;
@@ -264,13 +270,6 @@ internal class NumberKeysMenu : IMenu, IMenuPriorityExtension
 
 internal class NumbersMenuItem : IMenuItem, IMenuItemSubtitleExtension
 {
-	public override string ToString()
-	{
-		if (Subtitle is null)
-			return Title;
-		return $"{Title} ({Subtitle})";
-	}
-
 	public void RaiseSelected()
 	{
 		Selected?.Invoke(this);

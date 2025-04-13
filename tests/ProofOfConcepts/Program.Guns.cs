@@ -63,8 +63,8 @@ public static partial class Program
 			if (DisabledGuns.TryGetValue(primaryGun, out var disabledInfo))
 			{
 				item.Enabled = false;
-				if (item is IMenuItemSubtitleExtension subtitle)
-					subtitle.Subtitle = disabledInfo;
+				if (disabledInfo is not null)
+					item.Title = $"{primaryGun} [{disabledInfo}]";
 			}
 
 			if (item.Enabled)
@@ -91,8 +91,8 @@ public static partial class Program
 			if (DisabledGuns.TryGetValue(secondaryGun, out var disabledInfo))
 			{
 				item.Enabled = false;
-				if (item is IMenuItemSubtitleExtension subtitle)
-					subtitle.Subtitle = disabledInfo;
+				if (disabledInfo is not null)
+					item.Title = $"{secondaryGun} [{disabledInfo}]";
 			}
 
 			if (item.Enabled)
