@@ -1,8 +1,7 @@
-using System;
-
 using CounterStrikeSharp.API.Core;
 
 namespace CSSUniversalMenuAPI;
+
 
 public interface IMenuItem
 {
@@ -22,6 +21,8 @@ public interface IMenuItem
 	/// <summary>
 	/// Event raised when this item has been selected.
 	/// </summary>
-	event Action<IMenuItem> Selected;
+	event ItemSelectedAction Selected;
 	object? Context { get; set; }
 }
+
+public delegate void ItemSelectedAction(IMenuItem menuItem);

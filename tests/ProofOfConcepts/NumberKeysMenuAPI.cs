@@ -282,7 +282,7 @@ internal class NumbersMenuItem : IMenuItem, IMenuItemSubtitleExtension
 	public bool Enabled { get; set; } = true;
 	public object? Context { get; set; }
 
-	public event Action<IMenuItem>? Selected;
+	public event ItemSelectedAction? Selected;
 
 	// IMenuItemSubtitleExtension
 	public string? Subtitle { get; set; } = null;
