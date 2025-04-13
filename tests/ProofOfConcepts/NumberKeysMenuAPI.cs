@@ -264,7 +264,18 @@ internal class NumberKeysMenu : IMenu, IMenuPriorityExtension
 	}
 
 	// IMenuPriorityExtension
-	public double Priority { get; set; }
+	public double _Priority = 0.0;
+	public double Priority
+	{
+		get => Priority;
+		set
+		{
+			if (value == _Priority)
+				return;
+			_Priority = value;
+			MenuState.SortPriorities();
+		}
+	}
 	public bool IsFocused => MenuState.FocusStack.Count > 0 && MenuState.FocusStack[0] == this;
 }
 
