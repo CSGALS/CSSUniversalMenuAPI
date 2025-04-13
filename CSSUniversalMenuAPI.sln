@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests", "tests\UnitTests\UnitTests.csproj", "{A605AB7A-AD18-4C24-B086-9678F071FE5B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{12ADA386-60DF-4855-A3AD-D76CB1C3770F}"
+	ProjectSection(SolutionItems) = preProject
+		.dockerignore = .dockerignore
+		.editorconfig = .editorconfig
+		.gitignore = .gitignore
+		Directory.Build.props = Directory.Build.props
+		Directory.Build.targets = Directory.Build.targets
+		global.json = global.json
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSSUniversalMenuAPI", "src\CSSUniversalMenuAPI\CSSUniversalMenuAPI.csproj", "{2BB5D58A-F186-4B9C-8FE6-DDA31CC791C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProofOfConcepts", "tests\ProofOfConcepts\ProofOfConcepts.csproj", "{6BDB6BFA-284D-4C47-9095-4BBE83DB6B8A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A605AB7A-AD18-4C24-B086-9678F071FE5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A605AB7A-AD18-4C24-B086-9678F071FE5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A605AB7A-AD18-4C24-B086-9678F071FE5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A605AB7A-AD18-4C24-B086-9678F071FE5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BB5D58A-F186-4B9C-8FE6-DDA31CC791C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BB5D58A-F186-4B9C-8FE6-DDA31CC791C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BB5D58A-F186-4B9C-8FE6-DDA31CC791C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BB5D58A-F186-4B9C-8FE6-DDA31CC791C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BDB6BFA-284D-4C47-9095-4BBE83DB6B8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BDB6BFA-284D-4C47-9095-4BBE83DB6B8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BDB6BFA-284D-4C47-9095-4BBE83DB6B8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BDB6BFA-284D-4C47-9095-4BBE83DB6B8A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C275584F-B754-4C9D-9361-03D343B72607}
+	EndGlobalSection
+EndGlobal

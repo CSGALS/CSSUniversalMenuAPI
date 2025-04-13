@@ -1,0 +1,58 @@
+<!-- Shared project settings -->
+<Project>
+
+  <!-- project global settings -->
+  <PropertyGroup>
+    <TargetFramework Condition="'$(TargetFramework)' == ''">net8.0</TargetFramework>
+    <!-- Enable the new nullability syntax and analyzing -->
+    <Nullable>enable</Nullable>
+    <!-- Allow using `init` and records in .NET Core versions prior to .NET 5 -->
+    <LangVersion Condition="'$(LangVersion)' == ''">13.0</LangVersion>
+    <!--<Optimize>false</Optimize>-->
+    <!-- CA2007, RCS1090: Don't want ConfigureAwait(false), we *do* want to use the sync context! -->
+    <!-- 1591: Ignore missing inline documentation. -->
+    <!-- CA1062: Prefer T? for possible nulls. -->
+    <!-- CA1014: TODO: Add this attribute so other .NET languages can use these libs. -->
+    <!-- CA1032: TODO: Maybe reinstate this later. Implementing custom exceptions can be overly tedious. -->
+    <!-- CA1044: Write only indexers are used where reading back the value *shouldn't* happen, and is a huge code smell. -->
+    <!-- CA1003: Events use struct types not value types to avoid garbage from being generated. -->
+    <!-- CA1724: Too many false negatives. -->
+    <!-- CA2225: Don't want operators to have methods.. -->
+    <!-- CA1303: Don't localize internal strings. -->
+    <NoWarn>$(NoWarn);RCS1090;1591;CA2007;CA1062;CA1014;CA1032;CA1003;CA1724;CA2225;CA1303;</NoWarn>
+    <!-- Generate XMLdocs -->
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <!-- Disable system locales -->
+    <InvariantGlobalization Condition="'$(InvariantGlobalization)' == ''">true</InvariantGlobalization>
+    <!-- Ensure code style is followed, with heightened warnings -->
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
+    <AnalysisLevel>9.0</AnalysisLevel>
+    <!-- Meta info -->
+    <Authors>Ashleigh Adams</Authors>
+    <RootNamespace>UniversalMenuAPI</RootNamespace>
+    <!--<PackageIcon>images/packageicon.png</PackageIcon>-->
+  </PropertyGroup>
+  <!--
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)/.meta/packageicon.png" Pack="true" PackagePath="/images/" Visible="false" />
+  </ItemGroup>
+  -->
+
+  <!-- Automatic versioning -->
+  <PropertyGroup Condition="'$(CI)' == ''">
+    <VerliteBuildMetadata>local</VerliteBuildMetadata>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VerliteEnableShadowRepo>true</VerliteEnableShadowRepo>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Verlite.MsBuild" Version="2.6.0" PrivateAssets="All" />
+  </ItemGroup>
+
+  <!-- Reproducible builds  -->
+  <ItemGroup>
+    <PackageReference Include="DotNet.ReproducibleBuilds" Version="1.2.25" PrivateAssets="All" />
+  </ItemGroup>
+
+</Project>

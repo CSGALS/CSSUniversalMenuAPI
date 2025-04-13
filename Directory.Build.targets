@@ -1,0 +1,23 @@
+<!-- Shared project settings -->
+<!-- Revision: 2021.10.19.0 -->
+
+<Project>
+  <PropertyGroup>
+    <_LegacyXmlDocsCopier />
+    <_LegacyXmlDocsCopier Condition="'$(TargetFramework)' == 'netstandard2.1'">true</_LegacyXmlDocsCopier>
+    <_LegacyXmlDocsCopier Condition="'$(TargetFramework)' == 'net5.0'">true</_LegacyXmlDocsCopier>
+  </PropertyGroup>
+
+  <!-- https://github.com/dotnet/sdk/issues/1458#issuecomment-420456386 -->
+  <!-- comment this PDB workaround out to get publishing the test game working again -->
+  <Target Name="_ResolveCopyLocalNuGetPackagePdbsAndXml" Condition="'$(CopyLocalLockFileAssemblies)' == 'true' And '$(Configuration)' == 'Debug' And '$(_LegacyXmlDocsCopier)' == 'true'" AfterTargets="ResolveReferences">
+    <ItemGroup>
+      <ReferenceCopyLocalPaths
+        Include="@(ReferenceCopyLocalPaths->'%(RootDir)%(Directory)%(Filename).pdb')"
+        Condition="'%(ReferenceCopyLocalPaths.NuGetPackageId)' != '' and Exists('%(RootDir)%(Directory)%(Filename).pdb')" />
+      <ReferenceCopyLocalPaths
+        Include="@(ReferenceCopyLocalPaths->'%(RootDir)%(Directory)%(Filename).xml')"
+        Condition="'%(ReferenceCopyLocalPaths.NuGetPackageId)' != '' and Exists('%(RootDir)%(Directory)%(Filename).xml')" />
+    </ItemGroup>
+  </Target>
+</Project>
