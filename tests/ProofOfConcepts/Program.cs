@@ -43,6 +43,9 @@ public static partial class Program
 								case "!guns":
 									GunsCommand(player);
 									break;
+								case "!admin":
+									AdminCommand(player);
+									break;
 								default:
 									break;
 							}
