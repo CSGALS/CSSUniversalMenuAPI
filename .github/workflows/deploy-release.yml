@@ -16,6 +16,8 @@ jobs:
   build:
     name: Deploy release
     runs-on: ubuntu-24.04
+    permissions:
+      packages: write
     steps:
     - uses: actions/checkout@v4
       with:
