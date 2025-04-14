@@ -117,11 +117,13 @@ internal class NumberKeysMenuAPI : ISampleMenu
 						writeLine($"  {item.Subtitle}", background: true);
 				}
 
-				bool showBackButton = itemsStart == 0 && focusedMenu.PlayerCanClose;
+				bool showExitButton = focusedMenu.Parents.Where(x => !x.PlayerCanClose).Any() == false;
+				bool showBackButton = showExitButton
+					? itemsStart == 0 && focusedMenu.PlayerCanClose && focusedMenu.Parent is not null
+					: itemsStart == 0 && focusedMenu.PlayerCanClose;
 				bool showPrevButton = itemsStart > 0;
 				bool showNextButton = itemsStart + itemsInPage < focusedMenu.Items.Count;
 				bool showNavigation = showBackButton || showPrevButton || showNextButton;
-				bool showExitButton = focusedMenu.Parents.Where(x => !x.PlayerCanClose).Any() == false;
 
 				if (showNavigation || showExitButton)
 				{
