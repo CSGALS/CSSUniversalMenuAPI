@@ -13,6 +13,7 @@ jobs:
     runs-on: ubuntu-24.04
     permissions:
       packages: write
+      contents: write
     steps:
     - *checkout
     - *setup-dotnet
