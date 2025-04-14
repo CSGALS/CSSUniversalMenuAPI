@@ -17,6 +17,14 @@ jobs:
     - *checkout
     - *setup-dotnet
     - *setup-nuget
+    - name: Setup Verlite
+      run: |
+        verlite_version="$(grep '"Verlite\.MsBuild"' Directory.Build.props | LC_ALL=en_US.utf8 grep -Po 'Version="\K[^"]+')"
+        dotnet tool install --global Verlite.CLI --version "$verlite_version"
+        verlite . --enable-shadow-repo --auto-fetch --verbosity verbatim
+    - name: Verify tag
+      run: |
+        [[ "v$(verlite .)" == "${GITHUB_REF#refs/*/}" ]] # error out if the versions don't match
     - *restore
     - *build
     - *test
