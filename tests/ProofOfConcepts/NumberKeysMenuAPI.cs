@@ -219,7 +219,10 @@ internal class NumbersPlayerMenuState
 			ret = right.Parents.Count.CompareTo(left.Parents.Count);
 			if (ret != 0)
 				return ret;
-			return right.Priority.CompareTo(left.Priority); // highest priority comes first
+			ret = right.Priority.CompareTo(left.Priority); // highest priority comes first
+			if (ret != 0)
+				return ret;
+			return right.OpenedAt.CompareTo(left.OpenedAt); // ok, select the newest menu first
 		});
 	}
 }
@@ -233,6 +236,7 @@ internal class NumberKeysMenu : IMenu, IMenuPriorityExtension
 	public List<NumbersMenuItem> Items { get; } = [];
 	public int CurrentPage { get; set; }
 	public NumberKeysMenu? Parent => Parents.Count > 0 ? Parents[^1] : null;
+	public DateTime OpenedAt { get; set; }
 
 	// IMenu
 	IMenu? IMenu.Parent => Parent;
@@ -252,6 +256,7 @@ internal class NumberKeysMenu : IMenu, IMenuPriorityExtension
 	{
 		if (IsActive)
 			return;
+		OpenedAt = DateTime.UtcNow;
 		MenuState.FocusStack.Add(this);
 		MenuState.SortPriorities();
 		if (Ct.CanBeCanceled)
