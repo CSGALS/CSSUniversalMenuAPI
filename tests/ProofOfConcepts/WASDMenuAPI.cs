@@ -116,7 +116,7 @@ internal class WASDMenuAPI : ISampleMenu
 				for (int i = itemsStart; i < itemsEnd; i++)
 				{
 					var item = focusedMenu.Items[i];
-					writeLine($"{i + 1}. {item.Title}", background: !item.Enabled, focused: i == focusedMenu.CurrentPosition);
+					writeLine(item.Title, background: !item.Enabled, focused: i == focusedMenu.CurrentPosition);
 				}
 			}
 
