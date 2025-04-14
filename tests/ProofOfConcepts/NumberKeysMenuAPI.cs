@@ -104,7 +104,7 @@ internal class NumberKeysMenuAPI : ISampleMenu
 			{
 				var focusedMenu = menuState.FocusStack[0];
 
-				writeLine($"{focusedMenu.Title}:");
+				writeLine($"{focusedMenu.Title}:", background: true);
 
 				var itemsStart = focusedMenu.CurrentPage * ItemsPerPage;
 				var itemsInPage = Math.Min(focusedMenu.Items.Count, itemsStart + ItemsPerPage) - itemsStart;

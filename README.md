@@ -16,8 +16,7 @@ Press the <kbd>Y</kbd> key to open "chat". There are currently the following com
 | `!guns` | Opens a guns menu similar to CSS/CSGO DM servers |
 | `!admin` | Opens an admin menu similar to sm_admin/SimpleAdmin |
 
-![Numbers menu](./docs/numbers-menu.png)
-![WASD menu](./docs/wasd-menu.png)
+![](./docs/menu-samples.png)
 
 ## Concerns & to do
 
