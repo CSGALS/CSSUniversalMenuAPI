@@ -85,10 +85,12 @@ internal class NumberKeysMenuAPI : ISampleMenu
 		void writeLine(string line = "", bool background = false)
 		{
 			if (background)
-				Console.ForegroundColor = ConsoleColor.DarkGray;
+				Console.ForegroundColor = ConsoleColor.Gray;
 			else
-				Console.ResetColor();
+				Console.ForegroundColor = ConsoleColor.DarkYellow;
+
 			Console.WriteLine(line);
+			Console.ResetColor();
 			linesWrote++;
 		}
 
@@ -145,7 +147,7 @@ internal class NumberKeysMenuAPI : ISampleMenu
 					}
 
 					if (showExitButton)
-						writeLine("0. Exit");
+						writeLine("0. Exit", background: true);
 				}
 			}
 		}
