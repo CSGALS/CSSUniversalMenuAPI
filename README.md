@@ -2,6 +2,23 @@
 
 A universal API for CounterStrikeSharp plugins to implement or use.
 
+## Sample implementations
+
+Some very simple, but feature complete, menus have been implemented as a proof of concept test and to act as reference.
+
+These samples render to the console in a very trivial fashion.
+
+Press the <kbd>Y</kbd> key to open "chat". There are currently the following commands:
+
+| Command |   |
+|---------|---|
+| `!menu` | Opens a menu allowing you to switch between number and WASD menus |
+| `!guns` | Opens a guns menu similar to CSS/CSGO DM servers |
+| `!admin` | Opens an admin menu similar to sm_admin/SimpleAdmin |
+
+![Numbers menu](./docs/numbers-menu.png)
+![WASD menu](./docs/wasd-menu.png)
+
 ## Concerns & to do
 
 - Fragmentation: https://xkcd.com/927/
