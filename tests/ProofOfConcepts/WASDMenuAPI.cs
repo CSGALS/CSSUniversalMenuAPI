@@ -118,10 +118,10 @@ internal class WASDMenuAPI : ISampleMenu
 					var item = focusedMenu.Items[i];
 					writeLine(item.Title, background: !item.Enabled, focused: i == focusedMenu.CurrentPosition);
 				}
-			}
 
-			writeLine("A: Back W/S: Up/Down", background: true);
-			writeLine("E&D: Select R: Exit", background: true);
+				writeLine("A: Back W/S: Up/Down", background: true);
+				writeLine("E&D: Select R: Exit", background: true);
+			}
 		}
 
 		Console.ResetColor();
