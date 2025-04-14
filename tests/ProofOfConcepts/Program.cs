@@ -16,20 +16,22 @@ public static partial class Program
 		var numbersItem = menu.CreateItem();
 		numbersItem.Title = "Numbers";
 		numbersItem.Enabled = API.GetType() != typeof(NumberKeysMenuAPI);
-		numbersItem.Selected += (menuItem) =>
-		{
-			menuItem.Menu.Exit();
-			API = new NumberKeysMenuAPI();
-		};
+		if (numbersItem.Enabled)
+			numbersItem.Selected += (menuItem) =>
+			{
+				menuItem.Menu.Exit();
+				API = new NumberKeysMenuAPI();
+			};
 
 		var wasdItem = menu.CreateItem();
 		wasdItem.Title = "WASD";
 		wasdItem.Enabled = API.GetType() != typeof(WASDMenuAPI);
-		wasdItem.Selected += (menuItem) =>
-		{
-			menuItem.Menu.Exit();
-			API = new WASDMenuAPI();
-		};
+		if (wasdItem.Enabled)
+			wasdItem.Selected += (menuItem) =>
+			{
+				menuItem.Menu.Exit();
+				API = new WASDMenuAPI();
+			};
 
 		menu.Display();
 	}
