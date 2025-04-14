@@ -74,6 +74,7 @@ definitions:
       pushd "$dst"
       7z a ../CSSUniversalMenuAPI.zip ./
       popd
+      rm -rf "$dst"
 
   empty: "hi" # fixes the yml parser from messing the last value up
 

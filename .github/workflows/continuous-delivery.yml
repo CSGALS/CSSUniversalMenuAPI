@@ -69,6 +69,7 @@ jobs:
         pushd "$dst"
         7z a ../CSSUniversalMenuAPI.zip ./
         popd
+        rm -rf "$dst"
 
     - name: Upload Artifacts
       uses: actions/upload-artifact@v4
