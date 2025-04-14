@@ -2,6 +2,16 @@
 
 A universal API for CounterStrikeSharp plugins to implement or use.
 
+There exists 2 scenarios:
+
+- You're hosting a server: you want all plugins to have a congruent interface;
+  plugins should not clash when multiple concurrent menus are created.
+  you want to pick the style of menus presented to players, WASD, numbers, chat, console, etc, or allow the player to pick their preference.
+- You're writing a plugin: you likely want to create a menu and present it to the player, you really just want to ask something to make you a menu without taking authority over
+any menu system.
+
+This interface aims to act as the intermediary between these two scenarios.
+
 ## Sample implementations
 
 Some very simple, but feature complete, menus have been implemented as a proof of concept test and to act as reference.
@@ -21,16 +31,24 @@ Press the <kbd>Y</kbd> key to open "chat". There are currently the following com
 ## Concerns & to do
 
 - Fragmentation: https://xkcd.com/927/
-  - Create adapters to and from existing interfaces
-  - Push for native support in all existing menus
-  - Check every use case is supported via the API, or an extension
+  - Create source and destination adapters for existing interfaces in this project
+  - Push for native support in existing plugin interactions
+  - Push for native support in existing menu implementations
+  - Check every use case for plugins wanting to create menus is supported via the API, or an extension
+    - See `IMenuPriorityExtension` and `IMenuItemSubtitleExtension` as examples for exposing extra functionality
 - Interface is agnostic to menu type
   - What use case is this not from a preference?
   - Is there any way we can have multiple different implementations side by side?
-- Why is there no "broadcast" API
+- Why is there no "broadcast" API?
   Complexities over navigation can be eliminated by forcing a menu to be created per player
   It also raises questions over expected behavior. Instead encode that behavior in the plugin as desired.
-  Object pooling should be done if there are concerns over memory allocations and GC pauses
+  Object pooling should be done if there are concerns over memory allocations and GC pauses. As an example of some nonsense that can be expressed in the API when global menus come into play are:
+
+  - What would `IsFocused` mean? Another menu could have taken precedence for some players.
+  - What would `IsActive` mean? Different players could have closed the menu.
+
+  It is possible there is room for an additional `IGlobalMenu` and `IMenuAPI.CreateGlobalMenu(IReadOnlyList<CCSPlayerController>? players = null)` API,
+  which does not support parents, active/focus queries, and such.
 
 
 ### API a little verbose?
