@@ -1,0 +1,80 @@
+#<shared>
+
+definitions:
+  default-defaults: &default-defaults
+    run:
+      shell: bash
+
+  checkout: &checkout
+    uses: actions/checkout@v4
+    with:
+      fetch-depth: '0'
+
+  setup-dotnet: &setup-dotnet
+    name: Setup .NET
+    uses: actions/setup-dotnet@v3
+    with:
+      dotnet-version: |
+        8.x
+        9.x
+
+  setup-nuget: &setup-nuget
+    name: Setup NuGet
+    run: |
+      dotnet nuget update source csgals --store-password-in-clear-text --username CSGALS --password ${{ secrets.GITHUB_TOKEN }}
+      dotnet nuget enable source csgals
+
+  restore: &restore
+    name: Restore
+    run: dotnet restore
+
+  build: &build
+    name: Build
+    run: dotnet build --configuration Release --no-restore
+
+  test: &test
+    name: Test
+    run: dotnet test --configuration Debug --logger GitHubActions -p:CollectCoverage=true -p:CoverletOutputFormat=cobertura
+
+  pack: &pack
+    name: Pack
+    run: dotnet pack -p:PackageOutputPath="$(pwd)/artifacts" --configuration Release --no-restore
+
+  upload-artifacts: &upload-artifacts
+    name: Upload Artifacts
+    uses: actions/upload-artifact@v4
+    if: success() || failure()
+    with:
+      name: artifacts
+      if-no-files-found: error
+      path:  |
+        artifacts/*
+
+  download-artifacts: &download-artifacts
+    name: Download Artifacts
+    uses: actions/download-artifact@v4
+    with:
+      path: artifacts
+      pattern: '*'
+      merge-multiple: true
+
+  publish-github: &publish-github
+    name: Publish NuGet GitHub
+    run: dotnet nuget push 'artifacts/*.nupkg' -k ${{ secrets.GITHUB_TOKEN }} -s csgals --skip-duplicate --no-symbols
+
+  build-css-package: &build-css-package
+    name: 'Build CSS Package'
+    run: |
+      src="./src/CSSUniversalMenuAPI/bin/Release/net8.0"
+      dst="./artifacts/CSSUniversalMenuAPI"
+      dst_shared="$dst/addons/counterstrikesharp/shared/CSSUniversalMenuAPI"
+      mkdir -p "$dst_shared"
+      cp "$src/CSSUniversalMenuAPI.dll" "$dst_shared/"
+      cp "$src/CSSUniversalMenuAPI.deps.json" "$dst_shared/"
+      pushd "$dst"
+      7z a ../CSSUniversalMenuAPI.zip ./
+      popd
+
+  empty: "hi" # fixes the yml parser from messing the last value up
+
+#</shared>

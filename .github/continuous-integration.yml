@@ -1,0 +1,32 @@
+name: CI
+
+on:
+  pull_request:
+    branches:
+    - main
+    - support/*
+    paths-ignore:
+    - 'docs/**'
+    - 'README.md'
+    - '.editorconfig'
+    - '.gitattributes'
+    - '.gitignore'
+    - '.github/ISSUE_TEMPLATE/**'
+    - '.github/pull_request_template.md'
+
+defaults: *default-defaults
+
+jobs:
+  build:
+    name: 'Continuous integration'
+    runs-on: ubuntu-24.04
+    steps:
+    - *checkout
+    - *setup-dotnet
+    - *setup-nuget
+    - *restore
+    - *build
+    - *test
+    - *pack
+    - *build-css-package
+    - *upload-artifacts

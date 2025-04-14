@@ -1,0 +1,49 @@
+name: Release
+
+on:
+  release:
+    types:
+      - published
+
+defaults: *default-defaults
+
+jobs:
+  build:
+    name: 'Deploy release'
+    runs-on: ubuntu-24.04
+    steps:
+    - *checkout
+    - *setup-dotnet
+    - *setup-nuget
+    - *restore
+    - *build
+    - *test
+    - *pack
+    - *build-css-package
+    - *upload-artifacts
+    - name: 'Upload release'
+      run: |
+        set -x
+        tag="${GITHUB_REF#refs/*/}"
+        files=()
+
+        IFS=$'\n';
+        for asset in $(find ./artifacts -name "CSSUniversalMenuAPI-*.zip"); do
+          files+=("$asset")
+        done
+
+        IFS=$'\n';
+        for asset in $(find ./artifacts -name "*.nupkg"); do
+          files+=("$asset")
+        done
+
+        gh release upload "$tag" "${files[@]}"
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - *publish-github
+
+    - name: 'Publish NuGet.org'
+      run: |
+        dotnet nuget push 'artifacts/*.nupkg' -k ${NUGETORG_TOKEN} -s https://api.nuget.org/v3/index.json --skip-duplicate --no-symbols
+      env:
+        NUGETORG_TOKEN: ${{ secrets.NUGETORG_TOKEN }}
