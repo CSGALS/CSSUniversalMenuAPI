@@ -9,5 +9,5 @@ public interface IHtmlSupportMenuExtension
 	/// Opt in rendering as HTML. Should default to false by the implementation. <br/>
 	/// When set to false, the implementation should escape HTML tags and entities in titles.
 	/// </summary>
-	public bool UseHtml { get; set; }
+	bool UseHtml { get; set; }
 }
