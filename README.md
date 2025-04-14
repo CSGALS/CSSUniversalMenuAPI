@@ -7,7 +7,7 @@ A universal API for CounterStrikeSharp plugins to implement or use.
 - Fragmentation: https://xkcd.com/927/
   - Create adapters to and from existing interfaces
   - Push for native support in all existing menus
-  - Check every usecase is supported via the API, or an extension
+  - Check every use case is supported via the API, or an extension
 - Interface is agnostic to menu type
   - What use case is this not from a preference?
   - Is there any way we can have multiple implementations at the same time?
@@ -57,7 +57,7 @@ API.CreateAndShowMenu(player, new("Admin")
 });
 ```
 
-But you could go as simple as this, if it just being a little less verbose suffices:
+But you could go as simple as this, if being just a little less verbose suffices:
 
 ```cs
 var menu = API.CreateMenu(player);
