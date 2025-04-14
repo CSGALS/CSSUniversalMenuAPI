@@ -8,6 +8,34 @@ public static partial class Program
 {
 	private static ISampleMenu API { get; set; } = new NumberKeysMenuAPI();
 
+	private static void MenuCommand(CCSPlayerController player)
+	{
+		var menu = API.CreateMenu(player);
+		menu.Title = "Menu Type";
+
+		var numbersItem = menu.CreateItem();
+		numbersItem.Title = "Numbers";
+		numbersItem.Enabled = API.GetType() != typeof(NumberKeysMenuAPI);
+		numbersItem.Selected += (menuItem) =>
+		{
+			menuItem.Menu.Exit();
+			API = new NumberKeysMenuAPI();
+		};
+
+		var wasdItem = menu.CreateItem();
+		wasdItem.Title = "WASD";
+		wasdItem.Enabled = API.GetType() != typeof(WASDMenuAPI);
+		wasdItem.Selected += (menuItem) =>
+		{
+			menuItem.Menu.Exit();
+			API = new WASDMenuAPI();
+		};
+
+		menu.Display();
+	}
+
+	//private static ISampleMenu API { get; set; } = new WASDMenuAPI();
+
 	public static int Main()
 	{
 		string? currentCmd = null;
@@ -45,6 +73,9 @@ public static partial class Program
 									break;
 								case "!admin":
 									AdminCommand(player);
+									break;
+								case "!menu":
+									MenuCommand(player);
 									break;
 								default:
 									break;
