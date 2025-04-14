@@ -267,7 +267,7 @@ internal class NumberKeysMenu : IMenu, IMenuPriorityExtension
 	public double _Priority = 0.0;
 	public double Priority
 	{
-		get => Priority;
+		get => _Priority;
 		set
 		{
 			if (value == _Priority)
