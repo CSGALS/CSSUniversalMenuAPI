@@ -1,5 +1,8 @@
 namespace CSSUniversalMenuAPI.Extensions;
 
+/// <summary>
+/// The implementation can handle concurrent menus. Provides hints and methods relating to this function.
+/// </summary>
 public interface IMenuPriorityExtension
 {
 	/// <summary>
