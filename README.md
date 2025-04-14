@@ -27,8 +27,7 @@ Press the <kbd>Y</kbd> key to open "chat". There are currently the following com
   - Check every use case is supported via the API, or an extension
 - Interface is agnostic to menu type
   - What use case is this not from a preference?
-  - Is there any way we can have multiple implementations at the same time?
-- Multiple menus at the same time?
+  - Is there any way we can have multiple different implementations side by side?
 - Why is there no "broadcast" API
   Complexities over navigation can be eliminated by forcing a menu to be created per player
   It also raises questions over expected behavior. Instead encode that behavior in the plugin as desired.
