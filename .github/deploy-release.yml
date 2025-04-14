@@ -39,7 +39,7 @@ jobs:
         files=()
 
         IFS=$'\n';
-        for asset in $(find ./artifacts -name "CSSUniversalMenuAPI-*.zip"); do
+        for asset in $(find ./artifacts -maxdepth 1 -name "*.zip"); do
           files+=("$asset")
         done
 
