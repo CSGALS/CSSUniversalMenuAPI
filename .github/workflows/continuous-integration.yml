@@ -46,7 +46,7 @@ jobs:
       run: dotnet restore
 
     - name: Build
-      run: dotnet build --configuration Release --no-restore
+      run: dotnet publish --configuration Release --no-restore
 
     - name: Test
       run: dotnet test --configuration Debug --logger GitHubActions -p:CollectCoverage=true
@@ -56,18 +56,11 @@ jobs:
       run: dotnet pack -p:PackageOutputPath="$(pwd)/artifacts" --configuration Release
         --no-restore
 
-    - name: Build CSS Package
+    - name: Build CSS Packages
       run: |
-        src="./src/CSSUniversalMenuAPI/bin/Release/net8.0"
-        dst="./artifacts/CSSUniversalMenuAPI"
-        dst_shared="$dst/addons/counterstrikesharp/shared/CSSUniversalMenuAPI"
-        mkdir -p "$dst_shared"
-        cp "$src/CSSUniversalMenuAPI.dll" "$dst_shared/"
-        cp "$src/CSSUniversalMenuAPI.deps.json" "$dst_shared/"
-        pushd "$dst"
-        7z a ../CSSUniversalMenuAPI.zip ./
-        popd
-        rm -rf "$dst"
+        bash package.sh
+
+
 
     - name: Upload Artifacts
       uses: actions/upload-artifact@v4

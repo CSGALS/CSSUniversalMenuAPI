@@ -9,6 +9,9 @@ public interface IMenuItem
 	/// The menu that this item belongs to.
 	/// </summary>
 	IMenu Menu { get; }
+	/// <summary>
+	/// The player this menu item belongs to.
+	/// </summary>
 	CCSPlayerController Player => Menu.Player;
 	/// <summary>
 	/// The item text to show to the player.
@@ -21,7 +24,7 @@ public interface IMenuItem
 	/// <summary>
 	/// Event raised when this item has been selected.
 	/// </summary>
-	event ItemSelectedAction Selected;
+	event ItemSelectedAction? Selected;
 	object? Context { get; set; }
 }
 
