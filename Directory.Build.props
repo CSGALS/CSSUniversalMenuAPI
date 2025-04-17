@@ -31,6 +31,7 @@
     <!-- Meta info -->
     <Authors>Ashleigh Adams</Authors>
     <RootNamespace>UniversalMenuAPI</RootNamespace>
+    <IsPackable Condition="'$(IsPackable)' == ''">false</IsPackable>
     <!--<PackageIcon>images/packageicon.png</PackageIcon>-->
   </PropertyGroup>
   <!--

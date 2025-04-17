@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>UniversalMenu.Compat.MenuManagerApi</RootNamespace>
+    <OutputType>Library</OutputType>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AngleSharp" Version="1.2.0" />
+
+    <ProjectReference Include="..\CSSUniversalMenuAPI\CSSUniversalMenuAPI.csproj">
+      <Private>False</Private>
+      <CopyLocalSatelliteAssemblies>False</CopyLocalSatelliteAssemblies>
+    </ProjectReference>
+
+    <Reference Include="MenuManagerApi">
+      <Private>false</Private>
+      <HintPath>..\..\thirdparty\MenuManagerApi\MenuManagerApi.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests", "tests\UnitTests\UnitTests.csproj", "{A605AB7A-AD18-4C24-B086-9678F071FE5B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{2BB5D58A-F186-4B9C-8FE6-DDA31CC791C7} = {2BB5D58A-F186-4B9C-8FE6-DDA31CC791C7}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{12ADA386-60DF-4855-A3AD-D76CB1C3770F}"
 	ProjectSection(SolutionItems) = preProject
@@ -19,6 +22,20 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSSUniversalMenuAPI", "src\CSSUniversalMenuAPI\CSSUniversalMenuAPI.csproj", "{2BB5D58A-F186-4B9C-8FE6-DDA31CC791C7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProofOfConcepts", "tests\ProofOfConcepts\ProofOfConcepts.csproj", "{6BDB6BFA-284D-4C47-9095-4BBE83DB6B8A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniversalMenu.Compat.MenuManagerApi", "src\UniversalMenu.Compat.MenuManagerApi\UniversalMenu.Compat.MenuManagerApi.csproj", "{44AAF649-62D6-1CD8-3F16-028F4D262BE6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniversalMenu.Driver.ScreenMenuAPI", "src\UniversalMenu.Driver.ScreenMenuAPI\UniversalMenu.Driver.ScreenMenuAPI.csproj", "{E2FD83DD-D7EA-97CA-B6F4-DE2F92E5A00F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GitHub Actions", "GitHub Actions", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+	ProjectSection(SolutionItems) = preProject
+		.github\continuous-delivery.yml = .github\continuous-delivery.yml
+		.github\continuous-integration.yml = .github\continuous-integration.yml
+		.github\dependabot.yml = .github\dependabot.yml
+		.github\deploy-release.yml = .github\deploy-release.yml
+		.github\regenerate-actions.sh = .github\regenerate-actions.sh
+		.github\shared.yml = .github\shared.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,9 +55,20 @@ Global
 		{6BDB6BFA-284D-4C47-9095-4BBE83DB6B8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6BDB6BFA-284D-4C47-9095-4BBE83DB6B8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6BDB6BFA-284D-4C47-9095-4BBE83DB6B8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44AAF649-62D6-1CD8-3F16-028F4D262BE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44AAF649-62D6-1CD8-3F16-028F4D262BE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44AAF649-62D6-1CD8-3F16-028F4D262BE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44AAF649-62D6-1CD8-3F16-028F4D262BE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2FD83DD-D7EA-97CA-B6F4-DE2F92E5A00F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2FD83DD-D7EA-97CA-B6F4-DE2F92E5A00F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2FD83DD-D7EA-97CA-B6F4-DE2F92E5A00F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2FD83DD-D7EA-97CA-B6F4-DE2F92E5A00F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{02EA681E-C7D8-13C7-8484-4AC65E1B71E8} = {12ADA386-60DF-4855-A3AD-D76CB1C3770F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C275584F-B754-4C9D-9361-03D343B72607}

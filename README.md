@@ -97,3 +97,19 @@ var menu = API.CreateMenu(player);
 menu.AddItem("Test", (menuItem) => Console.WriteLine("Test"));
 menu.Display();
 ```
+
+```mermaid
+classDiagram
+	MenuManagerImpl <-- MenuManagerApi
+	MenuManagerApi <-- UniversalMenu.Driver.MenuMangerApi
+	UniversalMenu.Driver.MenuMangerApi <-- CSSUniversalMenuAPI
+	ScreenMenuImpl <-- ScreenMenuAPI
+	ScreenMenuAPI <-- UniversalMenu.Driver.ScreenMenuAPI
+	UniversalMenu.Driver.ScreenMenuAPI <-- CSSUniversalMenuAPI
+	NativeMenuImpl <-- CSSUniversalMenuAPI
+	CSSUniversalMenuAPI <-- UniversalMenu.Compat.MenuMangerApi
+	UniversalMenu.Compat.MenuMangerApi <-- PluginUsingSomeMenuManager
+	CSSUniversalMenuAPI <-- UniversalMenu.Compat.ScreenMenuAPI
+	UniversalMenu.Compat.ScreenMenuAPI <-- PluginUsingSomeScreenMenu
+	CSSUniversalMenuAPI <-- PluginUsingUniversalAPI
+```

@@ -2,6 +2,7 @@ using System;
 using System.Threading;
 
 using CounterStrikeSharp.API.Core;
+using CounterStrikeSharp.API.Core.Capabilities;
 
 namespace CSSUniversalMenuAPI;
 
@@ -37,4 +38,9 @@ public interface IMenuAPI
 	/// <param name="player">The player of which to query.</param>
 	/// <returns>Whether the player has an active menu on their screen.</returns>
 	bool IsMenuOpen(CCSPlayerController player);
+
+	/// <summary>
+	/// Standard helper to get get or provide this implementation
+	/// </summary>
+	static readonly PluginCapability<IMenuAPI> PluginCapability = new("universalmenuapi");
 }
