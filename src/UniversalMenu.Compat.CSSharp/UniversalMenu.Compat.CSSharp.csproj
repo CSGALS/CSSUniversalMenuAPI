@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>UniversalMenu.Compat.CSSharp</RootNamespace>
+    <OutputType>Library</OutputType>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CSSUniversalMenuAPI\CSSUniversalMenuAPI.csproj">
+      <Private>False</Private>
+      <CopyLocalSatelliteAssemblies>False</CopyLocalSatelliteAssemblies>
+    </ProjectReference>
+
+    <ProjectReference Include="..\UniversalMenu.Compat.CSSharp.Shared\UniversalMenu.Compat.CSSharp.Shared.csproj">
+      <Private>False</Private>
+      <CopyLocalSatelliteAssemblies>False</CopyLocalSatelliteAssemblies>
+      <ExcludeAssets>runtime</ExcludeAssets>
+    </ProjectReference>
+
+    <PackageReference Include="CS2ScreenMenuAPI" Version="3.0.4" ExcludeAssets="runtime" />
+  </ItemGroup>
+
+</Project>
