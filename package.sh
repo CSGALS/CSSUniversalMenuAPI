@@ -16,6 +16,20 @@ mkdir -p "$dst_plugins/UniversalMenu.Compat.MenuManagerApi"
 src="./src/UniversalMenu.Compat.MenuManagerApi/bin/Release/net8.0/publish"
 cp -r "$src/." "$dst_plugins/UniversalMenu.Compat.MenuManagerApi/"
 
+# package UniversalMenu.Compat.CSSharp
+mkdir -p "$dst_plugins/UniversalMenu.Compat.CSSharp"
+src="./src/UniversalMenu.Compat.CSSharp/bin/Release/net8.0/publish"
+cp -r "$src/." "$dst_plugins/UniversalMenu.Compat.CSSharp/"
+# shared part: allows modified methods to load the 0Harmony.dll dependency
+mkdir -p "$dst_plugins/UniversalMenu.Compat.CSSharp.Shared"
+src="./src/UniversalMenu.Compat.CSSharp.Shared/bin/Release/net8.0/publish"
+cp -r "$src/." "$dst_plugins/UniversalMenu.Compat.CSSharp.Shared/"
+
+# package UniversalMenu.Compat.ScreenMenuAPI # this isn't implemented yet
+#mkdir -p "$dst_plugins/UniversalMenu.Compat.ScreenMenuAPI"
+#src="./src/UniversalMenu.Compat.ScreenMenuAPI/bin/Release/net8.0/publish"
+#cp -r "$src/." "$dst_shared/UniversalMenu.Compat.ScreenMenuAPI/"
+
 # zip CSSUniversalMenuAPI.zip
 pushd "$dst"
 7z a ../CSSUniversalMenuAPI.zip ./
