@@ -19,7 +19,7 @@ using IUniversalMenu = CSSUniversalMenuAPI.IMenu;
 
 namespace UniversalMenu.Compat.CSSharp;
 
-public static class CSSSharpCompatPluginShared
+public static class CSSharpCompatPluginShared
 {
 	private static Harmony? Harmony { get; set; }
 	private static Dictionary<nint, IUniversalMenu> ActiveMenus { get; } = new();
@@ -56,6 +56,11 @@ public static class CSSSharpCompatPluginShared
 	public static void Unpatch()
 	{
 		Harmony?.UnpatchAll();
+	}
+
+	public static void PlayerDisconnected(CCSPlayerController player)
+	{
+		ActiveMenus.Remove(player.Handle);
 	}
 
 	public static bool BaseMenu_Open(BasePlugin? plugin, CCSPlayerController player, BaseMenu menu)
