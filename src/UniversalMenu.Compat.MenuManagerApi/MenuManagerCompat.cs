@@ -30,9 +30,7 @@ public class MenuManagerCompat : BasePlugin
 			if (Instance is not null)
 				return Instance;
 
-			var universalAPI = IMenuAPI.PluginCapability.Get()
-				?? throw new Exception("Unable to find CSSUniversalAPI supporting menu or adapter");
-			Instance = new MenuManagerTranslator(this, universalAPI);
+			Instance = new MenuManagerTranslator(this);
 
 			return Instance;
 		});

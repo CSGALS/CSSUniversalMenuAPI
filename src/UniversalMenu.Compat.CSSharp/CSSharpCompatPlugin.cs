@@ -80,7 +80,7 @@ public class CSSharpCompatPlugin : BasePlugin
 			activeMenu.Close();
 		}
 
-		var api = IMenuAPI.PluginCapability.Get();
+		var api = CSSUniversalMenuAPI.UniversalMenu.DefaultDriver;
 
 		if (api is null) // fall back to builtin menu
 			return true;
