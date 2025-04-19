@@ -12,13 +12,10 @@
       <CopyLocalSatelliteAssemblies>False</CopyLocalSatelliteAssemblies>
     </ProjectReference>
 
-    <ProjectReference Include="..\UniversalMenu.Compat.CSSharp.Shared\UniversalMenu.Compat.CSSharp.Shared.csproj">
-      <Private>False</Private>
-      <CopyLocalSatelliteAssemblies>False</CopyLocalSatelliteAssemblies>
-      <ExcludeAssets>runtime</ExcludeAssets>
-    </ProjectReference>
-
     <PackageReference Include="CS2ScreenMenuAPI" Version="3.0.4" ExcludeAssets="runtime" />
+    
+    <PackageReference Include="AngleSharp" Version="1.2.0" />
+    <PackageReference Include="Lib.Harmony" Version="2.3.6" />
   </ItemGroup>
 
 </Project>
