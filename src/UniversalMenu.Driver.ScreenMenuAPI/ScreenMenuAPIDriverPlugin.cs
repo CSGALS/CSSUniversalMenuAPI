@@ -13,7 +13,7 @@ namespace UniversalMenu.ScreenMenuAPIAdapter;
 [MinimumApiVersion(314)]
 public class ScreenMenuAPIDriverPlugin : BasePlugin
 {
-	public override string ModuleName => "UniversalMenu.Driver.ScreenMenuAPI";
+	public override string ModuleName => "UniversalMenu.DefaultDriver.ScreenMenuAPI";
 	public override string ModuleDescription => "Implement CSSUniversalMenuAPI via ScreenMenuAPI";
 	public override string ModuleVersion => Verlite.Version.Full;
 
@@ -24,16 +24,14 @@ public class ScreenMenuAPIDriverPlugin : BasePlugin
 	{
 		Cts = new CancellationTokenSource();
 
-		Capabilities.RegisterPluginCapability(IMenuAPI.PluginCapability, () =>
-		{
-			DriverInstance ??= new ScreenMenuApiDriver(this);
-			return DriverInstance;
-		});
+		DriverInstance = new ScreenMenuApiDriver(this);
+		CSSUniversalMenuAPI.UniversalMenu.RegisterDriver("ScreenMenuAPI", DriverInstance);
 	}
 
 	public override void Unload(bool hotReload)
 	{
 		Cts.Cancel();
+		CSSUniversalMenuAPI.UniversalMenu.UnregisterDriver("ScreenMenuAPI");
 	}
 
 	[ConsoleCommand("css_0"), ConsoleCommand("css_1"), ConsoleCommand("css_2"), ConsoleCommand("css_3"), ConsoleCommand("css_4")]
