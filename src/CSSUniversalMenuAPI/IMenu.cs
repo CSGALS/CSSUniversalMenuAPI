@@ -1,3 +1,5 @@
+using System.Diagnostics.CodeAnalysis;
+
 using CounterStrikeSharp.API.Core;
 
 namespace CSSUniversalMenuAPI;
@@ -49,5 +51,29 @@ public interface IMenu
 			current.Close();
 			current = current.Parent;
 		} while (current is not null);
+	}
+
+	/// <summary>
+	/// Attempt to get an extension for the current menu. <br/>
+	///
+	/// This is preferred over direct casting, as it allows menus to be wrapped,
+	/// and switching the implementation at runtime for a single player.
+	/// </summary>
+	/// <typeparam name="TExtension">The extension's type.</typeparam>
+	/// <param name="extension">The dynamic casted extension.</param>
+	/// <returns>If the extension is supported, returns <c>true</c>, otherwise <c>false</c>.</returns>
+	bool TryGetExtension<TExtension>([NotNullWhen(true)] out TExtension? extension)
+		where TExtension : class
+	{
+		if (this is TExtension ext)
+		{
+			extension = ext;
+			return true;
+		}
+		else
+		{
+			extension = null;
+			return false;
+		}
 	}
 }

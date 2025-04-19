@@ -100,7 +100,7 @@ file static class Extensions
 	{
 		var menu = api.CreateMenu(player);
 		menu.Title = items.Title;
-		if (menu is IMenuPriorityExtension priorityExtension)
+		if (menu.TryGetExtension<IMenuPriorityExtension>(out var priorityExtension))
 			priorityExtension.Priority = 100.0;
 		menu.CreateItemsInternal(api, items, donePlayers);
 		menu.Display();
@@ -109,7 +109,7 @@ file static class Extensions
 	{
 		var menu = api.CreateMenu(parent);
 		menu.Title = items.Title;
-		if (menu is IMenuPriorityExtension priorityExtension)
+		if (menu.TryGetExtension<IMenuPriorityExtension>(out var priorityExtension))
 			priorityExtension.Priority = 100.0;
 		menu.CreateItemsInternal(api, items, donePlayers);
 		menu.Display();

@@ -89,7 +89,7 @@ public class CSSharpCompatPlugin : BasePlugin
 		newMenu.PlayerCanClose = menu.ExitButton;
 
 		var useHtml = false;
-		if (newMenu is IHtmlSupportMenuExtension htmlMenu)
+		if (newMenu.TryGetExtension<IHtmlSupportMenuExtension>(out var htmlMenu))
 			htmlMenu.UseHtml = useHtml = true;
 
 		if (useHtml)

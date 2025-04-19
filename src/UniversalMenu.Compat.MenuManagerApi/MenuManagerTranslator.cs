@@ -134,11 +134,11 @@ internal sealed class MenuInstanceTranslator : ICssMenu
 		menu.Title = Title;
 		menu.PlayerCanClose = true;// ExitButton;
 
-		bool usingHtml = false;
-		if (menu is IHtmlSupportMenuExtension htmlMenu)
+		var usingHtml = false;
+		if (menu.TryGetExtension<IHtmlSupportMenuExtension>(out var htmlMenu))
 			htmlMenu.UseHtml = usingHtml = true;
 
-		if (BackAction is not null && menu is INavigateBackMenuExtension backableMenu)
+		if (BackAction is not null && menu.TryGetExtension<INavigateBackMenuExtension>(out var backableMenu))
 			backableMenu.NavigateBack = (_) => BackAction.Invoke(player);
 
 		foreach (var option in MenuOptions)

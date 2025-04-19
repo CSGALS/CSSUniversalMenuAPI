@@ -66,8 +66,6 @@ internal class NumberKeysMenuAPI : ISampleMenu
 	{
 		if (extension == typeof(IMenuPriorityExtension))
 			return true;
-		if (extension == typeof(IMenuItemSubtitleExtension))
-			return true;
 		return false;
 	}
 
