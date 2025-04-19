@@ -5,11 +5,12 @@ using System.Linq;
 using AngleSharp.Dom;
 using AngleSharp.Html.Parser;
 
+using CounterStrikeSharp.API;
 using CounterStrikeSharp.API.Core;
-using CounterStrikeSharp.API.Modules.Entities;
 using CounterStrikeSharp.API.Modules.Menu;
 
 using CSSUniversalMenuAPI;
+using CSSUniversalMenuAPI.Extensions;
 
 using ICssMenu = CounterStrikeSharp.API.Modules.Menu.IMenu;
 using IMenuManagerAPI = MenuManager.IMenuApi;
@@ -31,7 +32,6 @@ public sealed class MenuManagerTranslator : IMenuManagerAPI
 	internal class PlayerState
 	{
 		public MenuInstanceTranslator? ActiveMenu { get; set; }
-		public IUniversalMenu? ExecutingMenu { get; set; }
 	}
 	internal SortedDictionary<ulong, PlayerState> PlayerStates = new();
 
@@ -42,8 +42,6 @@ public sealed class MenuManagerTranslator : IMenuManagerAPI
 		return state;
 	}
 
-	internal MenuInstanceTranslator? CurrentParentMenu { get; set; }
-
 	void IMenuManagerAPI.CloseMenu(CCSPlayerController player)
 	{
 		if (!PlayerStates.TryGetValue(player.SteamID, out var state))
@@ -51,6 +49,7 @@ public sealed class MenuManagerTranslator : IMenuManagerAPI
 		if (state.ActiveMenu is null)
 			return;
 		state.ActiveMenu.Close(player);
+		state.ActiveMenu = null;
 	}
 
 	ICssMenu IMenuManagerAPI.GetMenu(string title, Action<CCSPlayerController> back_action, Action<CCSPlayerController> reset_action)
@@ -65,18 +64,12 @@ public sealed class MenuManagerTranslator : IMenuManagerAPI
 
 	MenuManagerMenuType IMenuManagerAPI.GetMenuType(CCSPlayerController player)
 	{
-		// TODO: what is this function meant to get?
-		//var state = GetMenuState(player);
-		//if (state.ActiveMenu is not null)
-		//	return state.ActiveMenu.MenuType;
 		return MenuManagerMenuType.Default;
 	}
 
 	bool IMenuManagerAPI.HasOpenedMenu(CCSPlayerController player)
 	{
-		// does this return if a player already has a menu open, or what?
 		return UniversalAPI.IsMenuOpen(player);
-		//return GetMenuState(player).ActiveMenu is not null;
 	}
 
 	ICssMenu IMenuManagerAPI.NewMenu(string title, Action<CCSPlayerController> back_action)
@@ -101,6 +94,7 @@ internal sealed class MenuInstanceTranslator : ICssMenu
 	public Action<CCSPlayerController>? BackAction { get; }
 	public Action<CCSPlayerController>? ResetAction { get; }
 	public MenuManagerMenuType MenuType { get; set; }
+	public PostSelectAction PostSelectAction { get; set; } = PostSelectAction.Nothing;
 
 	public MenuInstanceTranslator(
 		string title,
@@ -124,32 +118,28 @@ internal sealed class MenuInstanceTranslator : ICssMenu
 	}
 
 	private Dictionary<ulong, IUniversalMenu> PlayerMenus = new();
-	void ICssMenu.Open(CCSPlayerController player)
+	public void Open(CCSPlayerController player)
 	{
+		CloseActiveMenu(player);
+		var menuState = Translator.GetMenuState(player);
+		menuState.ActiveMenu = this;
+
 		if (PlayerMenus.TryGetValue(player.SteamID, out var menu))
 		{
 			menu.Display();
 			return;
 		}
 
-		var menuState = Translator.GetMenuState(player);
-
-		// attempt to detect "reopening" the same menu
-		var parent = menuState.ExecutingMenu;
-		if (parent is not null && parent.Title == Title)
-			parent = parent.Parent;
-
-		if (parent is null) // TODO: add cancel token
-			menu = PlayerMenus[player.SteamID] = UniversalAPI.CreateMenu(player);
-		else
-			menu = PlayerMenus[player.SteamID] = UniversalAPI.CreateMenu(parent);
-
+		menu = PlayerMenus[player.SteamID] = UniversalAPI.CreateMenu(player);
 		menu.Title = Title;
 		menu.PlayerCanClose = true;// ExitButton;
 
 		bool usingHtml = false;
-		if (menu is CSSUniversalMenuAPI.Extensions.IHtmlSupportMenuExtension htmlMenu)
+		if (menu is IHtmlSupportMenuExtension htmlMenu)
 			htmlMenu.UseHtml = usingHtml = true;
+
+		if (BackAction is not null && menu is INavigateBackMenuExtension backableMenu)
+			backableMenu.NavigateBack = (_) => BackAction.Invoke(player);
 
 		foreach (var option in MenuOptions)
 		{
@@ -169,14 +159,22 @@ internal sealed class MenuInstanceTranslator : ICssMenu
 				item.Selected += (menuItem) =>
 				{
 					var menuOption = menuItem.Context as ChatMenuOption;
-					// MenuManager menus expect the menu to close on selection
-					menuState.ExecutingMenu = menu;
+					menuOption!.OnSelect(menuItem.Player, option);
+
+					switch (PostSelectAction)
 					{
-						menu.Close();
-						menuOption!.OnSelect(menuItem.Player, option);
-						ResetAction?.Invoke(menuItem.Player);
+						case PostSelectAction.Reset:
+							ResetAction?.Invoke(menuItem.Player);
+							break;
+						case PostSelectAction.Nothing:
+							break;
+						default:
+						case PostSelectAction.Close:
+							menu.Close();
+							if (menuState.ActiveMenu == this)
+								menuState.ActiveMenu = null;
+							break;
 					}
-					menuState.ExecutingMenu = null;
 				};
 		}
 
@@ -186,7 +184,20 @@ internal sealed class MenuInstanceTranslator : ICssMenu
 
 	void ICssMenu.OpenToAll()
 	{
-		throw new NotSupportedException("IMenu.OpenToAll() is not supported");
+		foreach (var player in Utilities.GetPlayers())
+			Open(player);
+	}
+	
+	private void CloseActiveMenu(CCSPlayerController player)
+	{
+		var menuState = Translator.GetMenuState(player);
+		if (menuState.ActiveMenu is null)
+			return;
+		if (!menuState.ActiveMenu.PlayerMenus.TryGetValue(player.SteamID, out var universalMenu))
+			return;
+
+		menuState.ActiveMenu = null;
+		universalMenu.Close();
 	}
 
 	internal void Close(CCSPlayerController player)
@@ -194,7 +205,5 @@ internal sealed class MenuInstanceTranslator : ICssMenu
 		if (!PlayerMenus.TryGetValue(player.SteamID, out var menu))
 			return;
 		menu.Close();
-		// TODO: do we invoke?
-		//BackAction?.Invoke(player);
 	}
 }
