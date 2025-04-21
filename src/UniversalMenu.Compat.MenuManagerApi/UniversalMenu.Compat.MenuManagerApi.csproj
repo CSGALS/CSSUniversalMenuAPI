@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <RootNamespace>UniversalMenu.Compat.MenuManagerApi</RootNamespace>
@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AngleSharp" Version="1.2.0" />
+    <PackageReference Include="AngleSharp" Version="1.3.0" />
 
     <ProjectReference Include="..\CSSUniversalMenuAPI\CSSUniversalMenuAPI.csproj">
       <Private>False</Private>
