@@ -116,9 +116,16 @@ internal class NumberKeysMenuAPI : ISampleMenu
 				}
 
 				bool showExitButton = focusedMenu.Parents.Where(x => !x.PlayerCanClose).Any() == false;
-				bool showBackButton = showExitButton
-					? itemsStart == 0 && focusedMenu.PlayerCanClose && focusedMenu.Parent is not null
-					: itemsStart == 0 && focusedMenu.PlayerCanClose;
+				bool showBackButton = focusedMenu switch
+				{
+					{ CurrentPage: not 0 } => false,
+					{ NavigateBack: not null } => true,
+					_ => showExitButton switch
+					{
+						true => focusedMenu.PlayerCanClose && focusedMenu.Parent is not null,
+						false => focusedMenu.PlayerCanClose,
+					},
+				};
 				bool showPrevButton = itemsStart > 0;
 				bool showNextButton = itemsStart + itemsInPage < focusedMenu.Items.Count;
 				bool showNavigation = showBackButton || showPrevButton || showNextButton;
@@ -169,11 +176,20 @@ internal class NumberKeysMenuAPI : ISampleMenu
 		var itemsStart = focusedMenu.CurrentPage * ItemsPerPage;
 		var itemsInPage = Math.Min(focusedMenu.Items.Count, itemsStart + ItemsPerPage) - itemsStart;
 
-		bool showBackButton = itemsStart == 0 && focusedMenu.PlayerCanClose;
+		bool showExitButton = focusedMenu.Parents.Where(x => !x.PlayerCanClose).Any() == false;
+		bool showBackButton = focusedMenu switch
+		{
+			{ CurrentPage: not 0 } => false,
+			{ NavigateBack: not null } => true,
+			_ => showExitButton switch
+			{
+				true => focusedMenu.PlayerCanClose && focusedMenu.Parent is not null,
+				false => focusedMenu.PlayerCanClose,
+			},
+		};
 		bool showPrevButton = itemsStart > 0;
 		bool showNextButton = itemsStart + itemsInPage < focusedMenu.Items.Count;
 		bool showNavigation = showBackButton || showPrevButton || showNextButton;
-		bool showExitButton = focusedMenu.Parents.Where(x => !x.PlayerCanClose).Any() == false;
 
 		switch (key.Key)
 		{
@@ -186,7 +202,12 @@ internal class NumberKeysMenuAPI : ISampleMenu
 				if (showPrevButton)
 					focusedMenu.CurrentPage--;
 				else if (showBackButton)
-					focusedMenu.Close();
+				{
+					if (focusedMenu.NavigateBack is not null)
+						focusedMenu.NavigateBack(focusedMenu);
+					else
+						focusedMenu.Close();
+				}
 				break;
 			case ConsoleKey.D9:
 				if (showNextButton)
@@ -229,7 +250,7 @@ internal class NumbersPlayerMenuState
 	}
 }
 
-internal class NumberKeysMenu : IMenu, IMenuPriorityExtension
+internal class NumberKeysMenu : IMenu, IMenuPriorityExtension, INavigateBackMenuExtension
 {
 	public required NumbersPlayerMenuState MenuState { get; init; }
 	public required List<NumberKeysMenu> Parents { get; init; }
@@ -284,6 +305,9 @@ internal class NumberKeysMenu : IMenu, IMenuPriorityExtension
 		}
 	}
 	public bool IsFocused => MenuState.FocusStack.Count > 0 && MenuState.FocusStack[0] == this;
+
+	// INavigateBackMenuExtension
+	public Action<IMenu>? NavigateBack { get; set; }
 }
 
 internal class NumbersMenuItem : IMenuItem, IMenuItemSubtitleExtension

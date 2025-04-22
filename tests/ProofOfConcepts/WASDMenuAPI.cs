@@ -145,7 +145,10 @@ internal class WASDMenuAPI : ISampleMenu
 					focusedMenu.Items[focusedMenu.CurrentPosition].RaiseSelected();
 				break;
 			case ConsoleKey.A:
-				focusedMenu.Close();
+				if (focusedMenu.NavigateBack is not null)
+					focusedMenu.NavigateBack(focusedMenu);
+				else if (focusedMenu.PlayerCanClose)
+					focusedMenu.Close();
 				break;
 			case ConsoleKey.W:
 				focusedMenu.CurrentPosition = Math.Max(focusedMenu.CurrentPosition - 1, 0);
@@ -190,7 +193,7 @@ internal class WASDPlayerMenuState
 	}
 }
 
-internal class WASDMenu : IMenu, IMenuPriorityExtension
+internal class WASDMenu : IMenu, IMenuPriorityExtension, INavigateBackMenuExtension
 {
 	public required WASDPlayerMenuState MenuState { get; init; }
 	public required List<WASDMenu> Parents { get; init; }
@@ -246,6 +249,9 @@ internal class WASDMenu : IMenu, IMenuPriorityExtension
 		}
 	}
 	public bool IsFocused => MenuState.FocusStack.Count > 0 && MenuState.FocusStack[0] == this;
+
+	// INavigateBackMenuExtension
+	public Action<IMenu>? NavigateBack { get; set; }
 }
 
 internal class WASDMenuItem : IMenuItem
