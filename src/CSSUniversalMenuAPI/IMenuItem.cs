@@ -30,7 +30,7 @@ public interface IMenuItem
 	object? Context { get; set; }
 
 	/// <summary>
-	/// Attempt to get an extension for the current menu. <br/>
+	/// Attempt to get an extension for the current menu item.<br/>
 	///
 	/// This is preferred over direct casting, as it allows menus to be wrapped,
 	/// and switching the implementation at runtime for a single player.

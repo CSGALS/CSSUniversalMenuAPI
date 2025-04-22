@@ -11,7 +11,8 @@ namespace CSSUniversalMenuAPI;
 
 /// <summary>
 /// Because menus may want access to other drivers, and PluginCapability&lt;&gt; is not expressive enough,
-/// this helper class is included with the interface to aid in constructing and 
+/// this helper class is included with the interface to aid in more complex scenarios, such as a switcher
+/// that allows a player to use their preferred menu.
 /// </summary>
 public static class UniversalMenu
 {
