@@ -47,9 +47,9 @@ commit_zip
 #commit_zip
 
 setup_zip UniversalMenu.Driver.ScreenMenuAPI
-copy_dir src/UniversalMenu.Driver.ScreenMenuAPI/bin/Release/net8.0/publish shared/UniversalMenu.Driver.ScreenMenuAPI
+copy_dir src/UniversalMenu.Driver.ScreenMenuAPI/bin/Release/net8.0/publish plugins/UniversalMenu.Driver.ScreenMenuAPI
 commit_zip
 
 setup_zip UniversalMenu.Driver.MenuManagerApi
-copy_dir src/UniversalMenu.Driver.MenuManagerApi/bin/Release/net8.0/publish shared/UniversalMenu.Driver.MenuManagerApi
+copy_dir src/UniversalMenu.Driver.MenuManagerApi/bin/Release/net8.0/publish plugins/UniversalMenu.Driver.MenuManagerApi
 commit_zip
