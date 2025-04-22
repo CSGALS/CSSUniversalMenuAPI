@@ -113,19 +113,3 @@ classDiagram
 	UniversalMenu.Compat.ScreenMenuAPI <-- PluginUsingSomeScreenMenu
 	CSSUniversalMenuAPI <-- PluginUsingUniversalAPI
 ```
-
-<!--
-Potentially interested parties in working on this project:
-
-exkludera Custom Menu
-rasco Menu library
-Intersting WASDMenuAPI
-xWidovV Admin menu
-Constummer Simple Guns Menu
-daffyy Simple Admin
-verneri Player votes
-schwarper CS2MenuManager
-ln(x) CS2 RTV/Extend/MapChooser
-T3Marius ScreenMenusAPI
-Mesharsky VIP manager
--->
