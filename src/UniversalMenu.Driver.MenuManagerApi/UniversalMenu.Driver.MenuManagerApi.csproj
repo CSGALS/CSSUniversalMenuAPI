@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>UniversalMenu.Driver.MenuManagerApi</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CSSUniversalMenuAPI\CSSUniversalMenuAPI.csproj">
+      <Private>False</Private>
+      <CopyLocalSatelliteAssemblies>False</CopyLocalSatelliteAssemblies>
+    </ProjectReference>
+
+    <Reference Include="MenuManagerApi">
+      <Private>false</Private>
+      <HintPath>..\..\thirdparty\MenuManagerApi\MenuManagerApi.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

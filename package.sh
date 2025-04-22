@@ -50,3 +50,20 @@ pushd "$dst"
 7z a ../UniversalMenu.Driver.ScreenMenuAPI.zip ./
 popd
 rm -rf "$dst"
+
+
+# build UniversalMenu.Driver.MenuManagerApi.zip
+dst="./artifacts/UniversalMenu.Driver.MenuManagerApi"
+dst_shared="$dst/addons/counterstrikesharp/shared"
+dst_plugins="$dst/addons/counterstrikesharp/plugins"
+
+# package UniversalMenu.Driver.MenuManagerApi
+mkdir -p "$dst_plugins/UniversalMenu.Driver.MenuManagerApi"
+src="./src/UniversalMenu.Driver.MenuManagerApi/bin/Release/net8.0/publish"
+cp -r "$src/." "$dst_plugins/UniversalMenu.Driver.MenuManagerApi/"
+
+# zip UniversalMenu.Driver.MenuManagerApi.zip
+pushd "$dst"
+7z a ../UniversalMenu.Driver.MenuManagerApi.zip ./
+popd
+rm -rf "$dst"

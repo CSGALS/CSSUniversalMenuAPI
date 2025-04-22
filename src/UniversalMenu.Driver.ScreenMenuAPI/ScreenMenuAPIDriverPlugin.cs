@@ -34,6 +34,16 @@ public class ScreenMenuAPIDriverPlugin : BasePlugin
 		CSSUniversalMenuAPI.UniversalMenu.UnregisterDriver("ScreenMenuAPI");
 	}
 
+	[GameEventHandler(HookMode.Pre)]
+	public HookResult OnPlayerDisconnected(EventPlayerDisconnect e, GameEventInfo info)
+	{
+		if (e.Userid is null)
+			return HookResult.Continue;
+
+		DriverInstance?.PlayerDisconnected(e.Userid.SteamID);
+		return HookResult.Continue;
+	}
+
 	[ConsoleCommand("css_0"), ConsoleCommand("css_1"), ConsoleCommand("css_2"), ConsoleCommand("css_3"), ConsoleCommand("css_4")]
 	[ConsoleCommand("css_5"), ConsoleCommand("css_6"), ConsoleCommand("css_7"), ConsoleCommand("css_8"), ConsoleCommand("css_9")]
 	[ConsoleCommand("css_screenmenu_bound_buttons")]

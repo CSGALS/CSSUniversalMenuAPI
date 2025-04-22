@@ -16,6 +16,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Directory.Build.props = Directory.Build.props
 		Directory.Build.targets = Directory.Build.targets
 		global.json = global.json
+		package.sh = package.sh
 		README.md = README.md
 	EndProjectSection
 EndProject
@@ -40,6 +41,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GitHub Actions", "GitHub Ac
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniversalMenu.Compat.CSSharp", "src\UniversalMenu.Compat.CSSharp\UniversalMenu.Compat.CSSharp.csproj", "{EF2866D7-C411-42ED-B5E0-DCE79CCFCA09}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniversalMenu.Driver.MenuManagerApi", "src\UniversalMenu.Driver.MenuManagerApi\UniversalMenu.Driver.MenuManagerApi.csproj", "{FB832721-DCE2-4F62-A441-6C3E21A05317}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,6 +78,10 @@ Global
 		{EF2866D7-C411-42ED-B5E0-DCE79CCFCA09}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EF2866D7-C411-42ED-B5E0-DCE79CCFCA09}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EF2866D7-C411-42ED-B5E0-DCE79CCFCA09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB832721-DCE2-4F62-A441-6C3E21A05317}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB832721-DCE2-4F62-A441-6C3E21A05317}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB832721-DCE2-4F62-A441-6C3E21A05317}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB832721-DCE2-4F62-A441-6C3E21A05317}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
