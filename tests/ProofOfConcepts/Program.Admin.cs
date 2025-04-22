@@ -150,7 +150,7 @@ file static class Extensions
 		}
 	}
 
-	public class MenuItems : IList<MenuItems>
+	public class MenuItems : ICollection<MenuItems>
 	{
 		public string Title { get; }
 		public bool Exit { get; }
@@ -167,18 +167,14 @@ file static class Extensions
 		}
 
 
-		public MenuItems this[int index] { get => ((IList<MenuItems>)Items)[index]; set => ((IList<MenuItems>)Items)[index] = value; }
-		int ICollection<MenuItems>.Count => ((ICollection<MenuItems>)Items).Count;
-		public bool IsReadOnly => ((ICollection<MenuItems>)Items).IsReadOnly;
-		public void Add(MenuItems item) => ((ICollection<MenuItems>)Items).Add(item);
-		public void Clear() => ((ICollection<MenuItems>)Items).Clear();
-		public bool Contains(MenuItems item) => ((ICollection<MenuItems>)Items).Contains(item);
-		public void CopyTo(MenuItems[] array, int arrayIndex) => ((ICollection<MenuItems>)Items).CopyTo(array, arrayIndex);
-		public IEnumerator<MenuItems> GetEnumerator() => ((IEnumerable<MenuItems>)Items).GetEnumerator();
-		public int IndexOf(MenuItems item) => ((IList<MenuItems>)Items).IndexOf(item);
-		public void Insert(int index, MenuItems item) => ((IList<MenuItems>)Items).Insert(index, item);
-		public bool Remove(MenuItems item) => ((ICollection<MenuItems>)Items).Remove(item);
-		public void RemoveAt(int index) => ((IList<MenuItems>)Items).RemoveAt(index);
-		IEnumerator IEnumerable.GetEnumerator() => ((IEnumerable)Items).GetEnumerator();
+		int ICollection<MenuItems>.Count => Items.Count;
+		public bool IsReadOnly => false;
+		public void Add(MenuItems item) => Items.Add(item);
+		public void Clear() => Items.Clear();
+		public bool Contains(MenuItems item) => Items.Contains(item);
+		public void CopyTo(MenuItems[] array, int arrayIndex) => Items.CopyTo(array, arrayIndex);
+		public IEnumerator<MenuItems> GetEnumerator() => Items.GetEnumerator();
+		public bool Remove(MenuItems item) => Items.Remove(item);
+		IEnumerator IEnumerable.GetEnumerator() => Items.GetEnumerator();
 	}
 }
