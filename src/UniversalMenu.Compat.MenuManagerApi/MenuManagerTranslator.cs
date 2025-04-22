@@ -9,7 +9,6 @@ using CounterStrikeSharp.API;
 using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Modules.Menu;
 
-using CSSUniversalMenuAPI;
 using CSSUniversalMenuAPI.Extensions;
 
 using ICssMenu = CounterStrikeSharp.API.Modules.Menu.IMenu;
@@ -22,11 +21,9 @@ namespace UniversalMenu.Compat.MenuManagerApi;
 public sealed class MenuManagerTranslator : IMenuManagerAPI
 {
 	public MenuManagerCompat Plugin { get; }
-	public IMenuAPI UniversalAPI { get; }
-	public MenuManagerTranslator(MenuManagerCompat plugin, IMenuAPI universalAPI)
+	public MenuManagerTranslator(MenuManagerCompat plugin)
 	{
 		Plugin = plugin;
-		UniversalAPI = universalAPI;
 	}
 
 	internal class PlayerState
@@ -69,7 +66,7 @@ public sealed class MenuManagerTranslator : IMenuManagerAPI
 
 	bool IMenuManagerAPI.HasOpenedMenu(CCSPlayerController player)
 	{
-		return UniversalAPI.IsMenuOpen(player);
+		return CSSUniversalMenuAPI.UniversalMenu.DefaultDriver?.IsMenuOpen(player) ?? false;
 	}
 
 	ICssMenu IMenuManagerAPI.NewMenu(string title, Action<CCSPlayerController> back_action)
@@ -87,7 +84,6 @@ internal sealed class MenuInstanceTranslator : ICssMenu
 {
 	public string Title { get; set; }
 	public MenuManagerTranslator Translator { get; }
-	public IMenuAPI UniversalAPI => Translator.UniversalAPI;
 	public bool ExitButton { get; set; }
 
 	public List<ChatMenuOption> MenuOptions { get; } = new();
@@ -130,7 +126,7 @@ internal sealed class MenuInstanceTranslator : ICssMenu
 			return;
 		}
 
-		menu = PlayerMenus[player.SteamID] = UniversalAPI.CreateMenu(player);
+		menu = PlayerMenus[player.SteamID] = CSSUniversalMenuAPI.UniversalMenu.CreateMenu(player);
 		menu.Title = Title;
 		menu.PlayerCanClose = true;// ExitButton;
 
