@@ -13,7 +13,7 @@ namespace UniversalMenu.ScreenMenuAPIAdapter;
 [MinimumApiVersion(314)]
 public class ScreenMenuAPIDriverPlugin : BasePlugin
 {
-	public override string ModuleName => "UniversalMenu.DefaultDriver.ScreenMenuAPI";
+	public override string ModuleName => "UniversalMenu.Driver.ScreenMenuAPI";
 	public override string ModuleDescription => "Implement CSSUniversalMenuAPI via ScreenMenuAPI";
 	public override string ModuleVersion => Verlite.Version.Full;
 

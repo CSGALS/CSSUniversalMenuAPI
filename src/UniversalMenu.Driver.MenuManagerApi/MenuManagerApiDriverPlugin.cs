@@ -13,7 +13,7 @@ namespace UniversalMenu.Driver.MenuManagerApi;
 [MinimumApiVersion(314)]
 public class MenuManagerApiDriverPlugin : BasePlugin
 {
-	public override string ModuleName => "UniversalMenu.DefaultDriver.MenuManagerApi";
+	public override string ModuleName => "UniversalMenu.Driver.MenuManagerApi";
 	public override string ModuleDescription => "Implement CSSUniversalMenuAPI via MenuManagerApi";
 	public override string ModuleVersion => Verlite.Version.Full;
 
