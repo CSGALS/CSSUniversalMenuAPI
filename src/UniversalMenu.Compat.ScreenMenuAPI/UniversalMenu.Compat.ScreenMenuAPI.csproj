@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <RootNamespace>UniversalMenu.Compat.ScreenMenuAPI</RootNamespace>
@@ -12,7 +12,7 @@
       <CopyLocalSatelliteAssemblies>False</CopyLocalSatelliteAssemblies>
     </ProjectReference>
 
-    <PackageReference Include="CS2ScreenMenuAPI" Version="3.0.4" ExcludeAssets="runtime" />
+    <PackageReference Include="CS2ScreenMenuAPI" Version="3.0.5" ExcludeAssets="runtime" />
   </ItemGroup>
 
 </Project>
