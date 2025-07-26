@@ -44,6 +44,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniversalMenu.Compat.CSShar
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniversalMenu.Driver.MenuManagerApi", "src\UniversalMenu.Driver.MenuManagerApi\UniversalMenu.Driver.MenuManagerApi.csproj", "{FB832721-DCE2-4F62-A441-6C3E21A05317}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniversalMenu.Compat.CS2MenuManager", "src\UniversalMenu.Compat.CS2MenuManager\UniversalMenu.Compat.CS2MenuManager.csproj", "{3A6C4FF8-19C5-3573-83F2-D42C082AFE43}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -82,6 +84,10 @@ Global
 		{FB832721-DCE2-4F62-A441-6C3E21A05317}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FB832721-DCE2-4F62-A441-6C3E21A05317}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FB832721-DCE2-4F62-A441-6C3E21A05317}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A6C4FF8-19C5-3573-83F2-D42C082AFE43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A6C4FF8-19C5-3573-83F2-D42C082AFE43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A6C4FF8-19C5-3573-83F2-D42C082AFE43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A6C4FF8-19C5-3573-83F2-D42C082AFE43}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
