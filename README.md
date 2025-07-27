@@ -22,18 +22,19 @@ This is a list of menus that implement the UniversalMenuAPI interface natively.
 
 - [CsGals.TeamDeathmatch](https://github.com/CSGALS/CsGals.TeamDeathmatch)
 
-## What about MenuManagerCS2/CS2ScreenMenuAPI/...?
+## What about MenuManager/ScreenMenuAPI/...?
 
-Compatibility plugins are provided adapting plugins using other menu APIs to CSSUniversalMenuAPI.
+Compatibility plugins are provided, adapting existing plugins that use other menu APIs to CSSUniversalMenuAPI.
+Driver plugins are provided, adapting CSSUniversalMenuAPI to other menu APIs.
 
-| Menu API | Compatibility plugin |
-|----------|----------------------|
-|[CounterStrikeSharp.MenuManager](https://docs.cssharp.dev/api/CounterStrikeSharp.API.Modules.Menu.MenuManager.html)|UniversalMenu.Compat.CSSharp|
-|[MenuManagerCS2](https://github.com/NickFox007/MenuManagerCS2)|UniversalMenu.Compat.MenuManagerApi|
-|[CS2ScreenMenuAPI](https://github.com/T3Marius/CS2ScreenMenuAPI)|*Not supported*|
-|[CS2MenuManager](https://github.com/schwarper/CS2MenuManager)|*Not supported*|
-|[WASDMenuAPI](https://github.com/Interesting-exe/WASDMenuAPI)|*Not supported*|
-|[oscar-wos/Menu](https://github.com/oscar-wos/Menu)|*Not supported*|
+| Menu API | Compatibility plugin | Driver plugin |
+|----------|----------------------|---------------|
+|[CounterStrikeSharp.MenuManager](https://docs.cssharp.dev/api/CounterStrikeSharp.API.Modules.Menu.MenuManager.html)|UniversalMenu.Compat.CSSharp|*Not supported*|
+|[MenuManagerCS2](https://github.com/NickFox007/MenuManagerCS2)|UniversalMenu.Compat.MenuManagerCS2|UniversalMenu.Driver.MenuManagerCS2|
+|[CS2ScreenMenuAPI](https://github.com/T3Marius/CS2ScreenMenuAPI)|*Not supported*|UniversalMenu.Compat.ScreenMenuAPI|
+|[CS2MenuManager](https://github.com/schwarper/CS2MenuManager)|*Not supported*|*Not supported*|
+|[WASDMenuAPI](https://github.com/Interesting-exe/WASDMenuAPI)|*Not supported*|*Not supported*|
+|[oscar-wos/Menu](https://github.com/oscar-wos/Menu)|*Not supported*|*Not supported*|
 
 ## Where and what to download?
 
@@ -43,12 +44,17 @@ If all of your server's plugins are all CSSUniversalMenuAPI-native, then you onl
 
 If your server's plugins use other menu APIs, then **either**:
 
-- Download `CSSUniversalMenuAPI.Compat.All.zip` which includes all compatibility plugins for all supported third party APIs.
+- Download `CSSUniversalMenuAPI.Compat.All.zip` which includes all compatibility plugins. Use only with native menus installed.
 - Download `CSSUniversalMenuAPI.zip` and any appropriate compatibility plugin for the third party menu API you want to support.
 
-> [!WARNING]
-> Do not install the compatibility plugins alongside the third party menu plugin, as they will conflict.
-> For example, do not install `MenuManagerCS2` and `UniversalMenu.Compat.MenuManagerApi` at the same time.
+> [!WARNING]  
+> Do not install the compat plugin alongside the menu plugin it provides compatibility for.  
+> Do not install the compat plugin alongside the driver plugin.
+>
+> Failure to do so will result in conflicts. As an example:  
+> **Do not** install `UniversalMenu.Compat.MenuManagerCS2` alongside `MenuManagerCS2`.  
+> **Do not** install `UniversalMenu.Compat.MenuManagerCS2` alongside `UniversalMenu.Driver.MenuManagerCS2`.  
+> **Do** install `UniversalMenu.Driver.MenuManagerCS2` alongside `MenuManagerCS2`.
 
 ## Sample implementations
 
