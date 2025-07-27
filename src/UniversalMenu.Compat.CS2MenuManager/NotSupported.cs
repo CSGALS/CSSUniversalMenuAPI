@@ -1,3 +1,15 @@
+// This file represents the unsupported or unimplemented shared public API of CS2MenuManager.dll
+// that plugins link to.
+//
+// As you may be able to tell, the authors of CS2MenuManager did not separate the public API
+// consumers (plugins) use and the internal API used by the CS2MenuManager project itself,
+// causing the surface area to become quite large. Most of it does not need to be implemented,
+// only the parts that plugins directly use.
+//
+// Methods that throw a NotImplementedException have yet to be implemented or triaged.
+// Methods that throw NotSupportedException will never be implemented by this project and
+// are provided only for binary compatibility.
+
 using System;
 using System.Collections.Generic;
 using System.Drawing;
