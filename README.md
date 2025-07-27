@@ -49,7 +49,7 @@ If your server's plugins use other menu APIs, then **either**:
 
 > [!WARNING]  
 > Do not install the compat plugin alongside the menu plugin it provides compatibility for.  
-> Do not install the compat plugin alongside the driver plugin.
+> Do not install the compat plugin alongside the driver plugin of the same API.
 >
 > Failure to do so will result in conflicts. As an example:  
 > **Do not** install `UniversalMenu.Compat.MenuManagerCS2` alongside `MenuManagerCS2`.  
