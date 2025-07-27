@@ -21,6 +21,11 @@ move_file() {
 	mv "$dst_css/$1" "$dst_css/$2/"
 }
 
+extract_zip() {
+	mkdir -p "$dst"
+	7z x "./artifacts/$1.zip" "-o$dst"
+}
+
 commit_zip() {
 	pushd "$dst"
 	7z a "../$zip_name.zip" ./
@@ -53,4 +58,11 @@ commit_zip
 
 setup_zip UniversalMenu.Driver.MenuManagerApi
 copy_dir src/UniversalMenu.Driver.MenuManagerApi/bin/Release/net8.0/publish plugins/UniversalMenu.Driver.MenuManagerApi
+commit_zip
+
+# make the compat batteries included package
+setup_zip CSSUniversalMenuAPI.Compat.All
+extract_zip CSSUniversalMenuAPI
+extract_zip UniversalMenu.Compat.CSSharp
+extract_zip UniversalMenu.Compat.MenuManagerApi
 commit_zip

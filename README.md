@@ -12,6 +12,44 @@ any menu system.
 
 This interface aims to act as the intermediary between these two scenarios.
 
+## Menus using CSSUniversalMenuAPI
+
+This is a list of menus that implement the UniversalMenuAPI interface natively.
+
+- [SharpModMenu](https://github.com/CSGALS/SharpModMenu)
+
+## Plugins using CSSUniversalMenuAPI
+
+- [CsGals.TeamDeathmatch](https://github.com/CSGALS/CsGals.TeamDeathmatch)
+
+## What about MenuManagerCS2/CS2ScreenMenuAPI/...?
+
+Compatibility plugins are provided adapting plugins using other menu APIs to CSSUniversalMenuAPI.
+
+| Menu API | Compatibility plugin |
+|----------|----------------------|
+|[CounterStrikeSharp.MenuManager](https://docs.cssharp.dev/api/CounterStrikeSharp.API.Modules.Menu.MenuManager.html)|UniversalMenu.Compat.CSSharp|
+|[MenuManagerCS2](https://github.com/NickFox007/MenuManagerCS2)|UniversalMenu.Compat.MenuManagerApi|
+|[CS2ScreenMenuAPI](https://github.com/T3Marius/CS2ScreenMenuAPI)|*Not supported*|
+|[CS2MenuManager](https://github.com/schwarper/CS2MenuManager)|*Not supported*|
+|[WASDMenuAPI](https://github.com/Interesting-exe/WASDMenuAPI)|*Not supported*|
+|[oscar-wos/Menu](https://github.com/oscar-wos/Menu)|*Not supported*|
+
+## Where and what to download?
+
+In the releases section of this repository, you can find the latest compiled binaries.
+
+If all of your server's plugins are all CSSUniversalMenuAPI-native, then you only need `CSSUniversalMenuAPI.zip`.
+
+If your server's plugins use other menu APIs, then **either**:
+
+- Download `CSSUniversalMenuAPI.Compat.All.zip` which includes all compatibility plugins for all supported third party APIs.
+- Download `CSSUniversalMenuAPI.zip` and any appropriate compatibility plugin for the third party menu API you want to support.
+
+> [!WARNING]
+> Do not install the compatibility plugins alongside the third party menu plugin, as they will conflict.
+> For example, do not install `MenuManagerCS2` and `UniversalMenu.Compat.MenuManagerApi` at the same time.
+
 ## Sample implementations
 
 Some very simple, but feature complete, menus have been implemented as a proof of concept test and to act as reference.
