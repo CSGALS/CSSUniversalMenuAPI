@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>CS2MenuManager</RootNamespace>
+    <AssemblyName>CS2MenuManager</AssemblyName>
+    <OutputType>Library</OutputType>
+    <VerliteVersionOverride>1.0.37</VerliteVersionOverride>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CSSUniversalMenuAPI\CSSUniversalMenuAPI.csproj">
+      <Private>False</Private>
+      <CopyLocalSatelliteAssemblies>False</CopyLocalSatelliteAssemblies>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

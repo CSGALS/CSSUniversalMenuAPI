@@ -10,10 +10,10 @@
       <CopyLocalSatelliteAssemblies>False</CopyLocalSatelliteAssemblies>
     </ProjectReference>
 
-    <Reference Include="MenuManagerApi">
-      <Private>false</Private>
-      <HintPath>..\..\thirdparty\MenuManagerApi\MenuManagerApi.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\UniversalMenu.Compat.MenuManagerApi.Shared\UniversalMenu.Compat.MenuManagerApi.Shared.csproj">
+      <Private>False</Private>
+      <CopyLocalSatelliteAssemblies>False</CopyLocalSatelliteAssemblies>
+    </ProjectReference>
   </ItemGroup>
 
 </Project>
