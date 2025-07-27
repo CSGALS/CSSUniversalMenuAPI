@@ -49,14 +49,14 @@ public sealed class MenuManagerTranslator : IMenuManagerAPI
 		state.ActiveMenu = null;
 	}
 
-	ICssMenu IMenuManagerAPI.GetMenu(string title, Action<CCSPlayerController> back_action, Action<CCSPlayerController> reset_action)
+	ICssMenu IMenuManagerAPI.GetMenu(string title, Action<CCSPlayerController>? backAction, Action<CCSPlayerController>? resetAction)
 	{
-		return new MenuInstanceTranslator(title, this, back_action, reset_action, MenuManagerMenuType.Default);
+		return new MenuInstanceTranslator(title, this, backAction, resetAction, MenuManagerMenuType.Default);
 	}
 
-	ICssMenu IMenuManagerAPI.GetMenuForcetype(string title, MenuManagerMenuType type, Action<CCSPlayerController> back_action, Action<CCSPlayerController> reset_action)
+	ICssMenu IMenuManagerAPI.GetMenuForcetype(string title, MenuManagerMenuType type, Action<CCSPlayerController>? backAction, Action<CCSPlayerController>? resetAction)
 	{
-		return new MenuInstanceTranslator(title, this, back_action, reset_action, type);
+		return new MenuInstanceTranslator(title, this, backAction, resetAction, type);
 	}
 
 	MenuManagerMenuType IMenuManagerAPI.GetMenuType(CCSPlayerController player)
@@ -69,14 +69,14 @@ public sealed class MenuManagerTranslator : IMenuManagerAPI
 		return CSSUniversalMenuAPI.UniversalMenu.DefaultDriver?.IsMenuOpen(player) ?? false;
 	}
 
-	ICssMenu IMenuManagerAPI.NewMenu(string title, Action<CCSPlayerController> back_action)
+	ICssMenu IMenuManagerAPI.NewMenu(string title, Action<CCSPlayerController>? backAction)
 	{
-		return new MenuInstanceTranslator(title, this, back_action, null, MenuManagerMenuType.Default);
+		return new MenuInstanceTranslator(title, this, backAction, null, MenuManagerMenuType.Default);
 	}
 
-	ICssMenu IMenuManagerAPI.NewMenuForcetype(string title, MenuManagerMenuType type, Action<CCSPlayerController> back_action)
+	ICssMenu IMenuManagerAPI.NewMenuForcetype(string title, MenuManagerMenuType type, Action<CCSPlayerController>? backAction)
 	{
-		return new MenuInstanceTranslator(title, this, back_action, null, type);
+		return new MenuInstanceTranslator(title, this, backAction, null, type);
 	}
 }
 

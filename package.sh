@@ -40,6 +40,7 @@ commit_zip
 
 setup_zip UniversalMenu.Compat.MenuManagerApi
 copy_dir src/UniversalMenu.Compat.MenuManagerApi/bin/Release/net8.0/publish plugins/UniversalMenu.Compat.MenuManagerApi
+copy_dir src/UniversalMenu.Compat.MenuManagerApi.Shared/bin/Release/net8.0/publish shared/MenuManagerApi
 commit_zip
 
 #setup_zip UniversalMenu.Compat.ScreenMenuAPI

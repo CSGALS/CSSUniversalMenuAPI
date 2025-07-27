@@ -130,7 +130,7 @@ internal class Menu : IMenu, INavigateBackMenuExtension
 		if (NavigateBack is not null)
 			navBack = (player) => NavigateBack(this);
 
-		TheMenu = MenuAPI.MenuManagerApi.GetMenu(Title, back_action: navBack!);
+		TheMenu = MenuAPI.MenuManagerApi.GetMenu(Title, backAction: navBack!);
 
 		foreach (var item in MenuItems)
 			TheMenu.AddMenuOption(item.Title, (player, option) => item.RaiseSelected(), !item.Enabled);
