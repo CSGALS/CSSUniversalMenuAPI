@@ -95,6 +95,9 @@ internal class Menu : IMenu, INavigateBackMenuExtension
 
 	void IMenu.Close()
 	{
+		if (MenuAPI.MenuManagerApi is null)
+			throw new Exception("MenuManagerCS2 not found");
+
 		if (!IsActive)
 			return;
 		IsActive = false;
@@ -117,7 +120,7 @@ internal class Menu : IMenu, INavigateBackMenuExtension
 	void IMenu.Display()
 	{
 		if (MenuAPI.MenuManagerApi is null)
-			throw new Exception("MenuManagerApi not found");
+			throw new Exception("MenuManagerCS2 not found");
 
 		IsActive = true;
 		if (TheMenu is not null)
