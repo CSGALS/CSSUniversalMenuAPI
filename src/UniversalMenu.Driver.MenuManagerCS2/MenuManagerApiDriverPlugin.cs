@@ -8,13 +8,13 @@ using CounterStrikeSharp.API.Core.Capabilities;
 
 using IMenuManagerApi = MenuManager.IMenuApi;
 
-namespace UniversalMenu.Driver.MenuManagerApi;
+namespace UniversalMenu.Driver.MenuManagerCS2;
 
 [MinimumApiVersion(314)]
 public class MenuManagerApiDriverPlugin : BasePlugin
 {
-	public override string ModuleName => "UniversalMenu.Driver.MenuManagerApi";
-	public override string ModuleDescription => "Implement CSSUniversalMenuAPI via MenuManagerApi";
+	public override string ModuleName => "UniversalMenu.Driver.MenuManagerCS2";
+	public override string ModuleDescription => "Implement CSSUniversalMenuAPI via MenuManagerCS2";
 	public override string ModuleVersion => Verlite.Version.Full;
 
 	internal CancellationTokenSource Cts { get; set; } = null!;
@@ -25,13 +25,13 @@ public class MenuManagerApiDriverPlugin : BasePlugin
 	{
 		Cts = new CancellationTokenSource();
 		DriverInstance = new MenuManagerApiDriver(this);
-		CSSUniversalMenuAPI.UniversalMenu.RegisterDriver("MenuManagerApi", DriverInstance);
+		CSSUniversalMenuAPI.UniversalMenu.RegisterDriver("MenuManagerCS2", DriverInstance);
 	}
 
 	public override void Unload(bool hotReload)
 	{
 		Cts.Cancel();
-		CSSUniversalMenuAPI.UniversalMenu.UnregisterDriver("MenuManagerApi");
+		CSSUniversalMenuAPI.UniversalMenu.UnregisterDriver("MenuManagerCS2");
 	}
 
 	public override void OnAllPluginsLoaded(bool hotReload)

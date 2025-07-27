@@ -24,7 +24,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSSUniversalMenuAPI", "src\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProofOfConcepts", "tests\ProofOfConcepts\ProofOfConcepts.csproj", "{6BDB6BFA-284D-4C47-9095-4BBE83DB6B8A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniversalMenu.Compat.MenuManagerApi", "src\UniversalMenu.Compat.MenuManagerApi\UniversalMenu.Compat.MenuManagerApi.csproj", "{44AAF649-62D6-1CD8-3F16-028F4D262BE6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniversalMenu.Compat.MenuManagerCS2", "src\UniversalMenu.Compat.MenuManagerCS2\UniversalMenu.Compat.MenuManagerCS2.csproj", "{44AAF649-62D6-1CD8-3F16-028F4D262BE6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniversalMenu.Compat.ScreenMenuAPI", "src\UniversalMenu.Compat.ScreenMenuAPI\UniversalMenu.Compat.ScreenMenuAPI.csproj", "{B5AB3AB6-5BB6-0154-27DF-61D9EE587806}"
 EndProject
@@ -42,11 +42,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GitHub Actions", "GitHub Ac
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniversalMenu.Compat.CSSharp", "src\UniversalMenu.Compat.CSSharp\UniversalMenu.Compat.CSSharp.csproj", "{EF2866D7-C411-42ED-B5E0-DCE79CCFCA09}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniversalMenu.Driver.MenuManagerApi", "src\UniversalMenu.Driver.MenuManagerApi\UniversalMenu.Driver.MenuManagerApi.csproj", "{FB832721-DCE2-4F62-A441-6C3E21A05317}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniversalMenu.Driver.MenuManagerCS2", "src\UniversalMenu.Driver.MenuManagerCS2\UniversalMenu.Driver.MenuManagerCS2.csproj", "{FB832721-DCE2-4F62-A441-6C3E21A05317}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniversalMenu.Compat.CS2MenuManager", "src\UniversalMenu.Compat.CS2MenuManager\UniversalMenu.Compat.CS2MenuManager.csproj", "{3A6C4FF8-19C5-3573-83F2-D42C082AFE43}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniversalMenu.Compat.MenuManagerApi.Shared", "src\UniversalMenu.Compat.MenuManagerApi.Shared\UniversalMenu.Compat.MenuManagerApi.Shared.csproj", "{1F800E4F-6CE5-D7C2-D40F-355098E91612}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniversalMenu.Compat.MenuManagerApi", "src\UniversalMenu.Compat.MenuManagerApi\UniversalMenu.Compat.MenuManagerApi.csproj", "{1F800E4F-6CE5-D7C2-D40F-355098E91612}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -43,9 +43,9 @@ copy_dir src/UniversalMenu.Compat.CSSharp/bin/Release/net8.0/publish plugins/Uni
 move_file plugins/UniversalMenu.Compat.CSSharp/0Harmony.dll shared/0Harmony
 commit_zip
 
-setup_zip UniversalMenu.Compat.MenuManagerApi
-copy_dir src/UniversalMenu.Compat.MenuManagerApi/bin/Release/net8.0/publish plugins/UniversalMenu.Compat.MenuManagerApi
-copy_dir src/UniversalMenu.Compat.MenuManagerApi.Shared/bin/Release/net8.0/publish shared/MenuManagerApi
+setup_zip UniversalMenu.Compat.MenuManagerCS2
+copy_dir src/UniversalMenu.Compat.MenuManagerCS2/bin/Release/net8.0/publish plugins/UniversalMenu.Compat.MenuManagerCS2
+copy_dir src/UniversalMenu.Compat.MenuManagerApi/bin/Release/net8.0/publish shared/MenuManagerApi
 commit_zip
 
 #setup_zip UniversalMenu.Compat.ScreenMenuAPI
@@ -56,13 +56,13 @@ setup_zip UniversalMenu.Driver.ScreenMenuAPI
 copy_dir src/UniversalMenu.Driver.ScreenMenuAPI/bin/Release/net8.0/publish plugins/UniversalMenu.Driver.ScreenMenuAPI
 commit_zip
 
-setup_zip UniversalMenu.Driver.MenuManagerApi
-copy_dir src/UniversalMenu.Driver.MenuManagerApi/bin/Release/net8.0/publish plugins/UniversalMenu.Driver.MenuManagerApi
+setup_zip UniversalMenu.Driver.MenuManagerCS2
+copy_dir src/UniversalMenu.Driver.MenuManagerCS2/bin/Release/net8.0/publish plugins/UniversalMenu.Driver.MenuManagerCS2
 commit_zip
 
 # make the compat batteries included package
 setup_zip CSSUniversalMenuAPI.Compat.All
 extract_zip CSSUniversalMenuAPI
 extract_zip UniversalMenu.Compat.CSSharp
-extract_zip UniversalMenu.Compat.MenuManagerApi
+extract_zip UniversalMenu.Compat.MenuManagerCS2
 commit_zip

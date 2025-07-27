@@ -16,7 +16,7 @@ using IMenuManagerAPI = MenuManager.IMenuApi;
 using IUniversalMenu = CSSUniversalMenuAPI.IMenu;
 using MenuManagerMenuType = MenuManager.MenuType;
 
-namespace UniversalMenu.Compat.MenuManagerApi;
+namespace UniversalMenu.Compat.MenuManagerCS2;
 
 public sealed class MenuManagerTranslator : IMenuManagerAPI
 {
@@ -183,7 +183,7 @@ internal sealed class MenuInstanceTranslator : ICssMenu
 		foreach (var player in Utilities.GetPlayers())
 			Open(player);
 	}
-	
+
 	private void CloseActiveMenu(CCSPlayerController player)
 	{
 		var menuState = Translator.GetMenuState(player);

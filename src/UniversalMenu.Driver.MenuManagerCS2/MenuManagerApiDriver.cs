@@ -11,7 +11,7 @@ using IMenuManagerApi = MenuManager.IMenuApi;
 using IMenuManagerMenu = CounterStrikeSharp.API.Modules.Menu.IMenu;
 using IMenu = CSSUniversalMenuAPI.IMenu;
 
-namespace UniversalMenu.Driver.MenuManagerApi;
+namespace UniversalMenu.Driver.MenuManagerCS2;
 
 internal class PlayerMenuState
 {

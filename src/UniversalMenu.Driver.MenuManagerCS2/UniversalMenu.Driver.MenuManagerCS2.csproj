@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>UniversalMenu.Driver.MenuManagerCS2</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CSSUniversalMenuAPI\CSSUniversalMenuAPI.csproj">
+      <Private>False</Private>
+      <CopyLocalSatelliteAssemblies>False</CopyLocalSatelliteAssemblies>
+    </ProjectReference>
+
+    <ProjectReference Include="..\UniversalMenu.Compat.MenuManagerApi\UniversalMenu.Compat.MenuManagerApi.csproj">
+      <Private>False</Private>
+      <CopyLocalSatelliteAssemblies>False</CopyLocalSatelliteAssemblies>
+    </ProjectReference>
+  </ItemGroup>
+
+</Project>

@@ -9,7 +9,7 @@ using CSSUniversalMenuAPI;
 
 using IMenuManagerAPI = MenuManager.IMenuApi;
 
-namespace UniversalMenu.Compat.MenuManagerApi;
+namespace UniversalMenu.Compat.MenuManagerCS2;
 
 [MinimumApiVersion(314)]
 public class MenuManagerCompat : BasePlugin
