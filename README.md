@@ -12,26 +12,18 @@ any menu system.
 
 This interface aims to act as the intermediary between these two scenarios.
 
-## Menus using CSSUniversalMenuAPI
+## Support matrix: what about MenuManager/ScreenMenuAPI/...?
 
-This is a list of menus that implement the UniversalMenuAPI interface natively.
+Compatibility plugins are provided, adapting existing plugins that wish to create menus via other APIs to CSSUniversalMenuAPI.  
+Driver plugins are provided, implementing CSSUniversalMenuAPI via other menu APIs.  
+Native menu drivers need no additional driver plugin as they implement the API directly.
 
-- [SharpModMenu](https://github.com/CSGALS/SharpModMenu)
-
-## Plugins using CSSUniversalMenuAPI
-
-- [CsGals.TeamDeathmatch](https://github.com/CSGALS/CsGals.TeamDeathmatch)
-
-## What about MenuManager/ScreenMenuAPI/...?
-
-Compatibility plugins are provided, adapting existing plugins that use other menu APIs to CSSUniversalMenuAPI.
-Driver plugins are provided, adapting CSSUniversalMenuAPI to other menu APIs.
-
-| Menu API | Compatibility plugin | Driver plugin |
-|----------|----------------------|---------------|
-|[CounterStrikeSharp.MenuManager](https://docs.cssharp.dev/api/CounterStrikeSharp.API.Modules.Menu.MenuManager.html)|UniversalMenu.Compat.CSSharp|*Not supported*|
-|[MenuManagerCS2](https://github.com/NickFox007/MenuManagerCS2)|UniversalMenu.Compat.MenuManagerCS2|UniversalMenu.Driver.MenuManagerCS2|
-|[CS2ScreenMenuAPI](https://github.com/T3Marius/CS2ScreenMenuAPI)|*Not supported*|UniversalMenu.Compat.ScreenMenuAPI|
+| Menu system | Compatibility plugin | Driver plugin |
+|-------------|----------------------|---------------|
+|[SharpModMenu](https://github.com/CSGALS/SharpModMenu)|*n/a*|*Native*|
+|[CounterStrikeSharp.MenuManager](https://docs.cssharp.dev/api/CounterStrikeSharp.API.Modules.Menu.MenuManager.html)|Compat.CSSharp|*Not supported*|
+|[MenuManagerCS2](https://github.com/NickFox007/MenuManagerCS2)|Compat.MenuManagerCS2|Driver.MenuManagerCS2|
+|[CS2ScreenMenuAPI](https://github.com/T3Marius/CS2ScreenMenuAPI)|*Not supported*|Driver.ScreenMenuAPI|
 |[CS2MenuManager](https://github.com/schwarper/CS2MenuManager)|*Not supported*|*Not supported*|
 |[WASDMenuAPI](https://github.com/Interesting-exe/WASDMenuAPI)|*Not supported*|*Not supported*|
 |[oscar-wos/Menu](https://github.com/oscar-wos/Menu)|*Not supported*|*Not supported*|
@@ -48,8 +40,8 @@ If your server's plugins use other menu APIs, then **either**:
 - Download `CSSUniversalMenuAPI.zip` and any appropriate compatibility plugin for the third party menu API you want to support.
 
 > [!WARNING]  
-> Do not install the compat plugin alongside the menu plugin it provides compatibility for.  
-> Do not install the compat plugin alongside the driver plugin of the same API.
+> Do not install a compat plugin alongside the menu plugin it provides compatibility for.  
+> Do not install a compat plugin alongside the driver plugin of the same API.
 >
 > Failure to do so will result in conflicts. As an example:  
 > **Do not** install `UniversalMenu.Compat.MenuManagerCS2` alongside `MenuManagerCS2`.  
