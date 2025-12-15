@@ -10,7 +10,7 @@
       <CopyLocalSatelliteAssemblies>False</CopyLocalSatelliteAssemblies>
     </ProjectReference>
 
-    <PackageReference Include="CS2ScreenMenuAPI" Version="3.0.5" ExcludeAssets="runtime" />
+    <PackageReference Include="CS2ScreenMenuAPI" Version="3.1.1" ExcludeAssets="runtime" />
   </ItemGroup>
 
 </Project>
