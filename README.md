@@ -21,16 +21,16 @@ This interface aims to act as the intermediary between these two scenarios.
 | Menu system                 | Compatibility plugin  | Driver plugin         |
 |-----------------------------|-----------------------|-----------------------|
 | *Native support*            |                       |                       |
-| [SharpModMenu](ms1)         | *n/a*                 | *Native*              |
+| [SharpModMenu][ms1]         | *n/a*                 | *Native*              |
 | *Limited Support*           |                       |                       |
-| [CSS.MenuManager](ms2)      | Compat.CSSharp        | *Not supported*       |
-| [MenuManagerCS2](ms3)       | Compat.MenuManagerCS2 | Driver.MenuManagerCS2 |
-| [CS2ScreenMenuAPI](ms4)     | *Not supported*       | Driver.ScreenMenuAPI  |
+| [CSS.MenuManager][ms2]      | Compat.CSSharp        | *Not supported*       |
+| [MenuManagerCS2][ms3]       | Compat.MenuManagerCS2 | Driver.MenuManagerCS2 |
+| [CS2ScreenMenuAPI][ms4]     | *Not supported*       | Driver.ScreenMenuAPI  |
 | *No Support*                |                       |                       |
-| [CS2MenuManager](ms5)       | *Not supported*       | *Not supported*       |
-| [WASDMenuAPI](ms6)          | *Not supported*       | *Not supported*       |
-| [oscar-wos/Menu](ms7)       | *Not supported*       | *Not supported*       |
-| [MenuManagerAPI](ms8)       | *Not supported*       | *Not supported*       |
+| [CS2MenuManager][ms5]       | *Not supported*       | *Not supported*       |
+| [WASDMenuAPI][ms6]          | *Not supported*       | *Not supported*       |
+| [oscar-wos/Menu][ms7]       | *Not supported*       | *Not supported*       |
+| [MenuManagerAPI][ms8]       | *Not supported*       | *Not supported*       |
 
 [ms1]: https://github.com/CSGALS/SharpModMenu
 [ms2]: https://docs.cssharp.dev/api/CounterStrikeSharp.API.Modules.Menu.MenuManager.html
