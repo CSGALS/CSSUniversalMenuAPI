@@ -14,19 +14,32 @@ This interface aims to act as the intermediary between these two scenarios.
 
 ## Support matrix: what about MenuManager/ScreenMenuAPI/...?
 
-Compatibility plugins are provided, adapting existing plugins that wish to create menus via other APIs to CSSUniversalMenuAPI.  
-Driver plugins are provided, implementing CSSUniversalMenuAPI via other menu APIs.  
-Native menu drivers need no additional driver plugin as they implement the API directly.
+- Compatibility plugins adapt existing menu APIs to CSSUniversalMenuAPI.  
+- Driver plugins translate CSSUniversalMenuAPI to existing menu APIs
+- Native menu drivers need no additional driver plugin as they implement the API directly.
 
-| Menu system | Compatibility plugin | Driver plugin |
-|-------------|----------------------|---------------|
-|[SharpModMenu](https://github.com/CSGALS/SharpModMenu)|*n/a*|*Native*|
-|[CounterStrikeSharp.MenuManager](https://docs.cssharp.dev/api/CounterStrikeSharp.API.Modules.Menu.MenuManager.html)|Compat.CSSharp|*Not supported*|
-|[MenuManagerCS2](https://github.com/NickFox007/MenuManagerCS2)|Compat.MenuManagerCS2|Driver.MenuManagerCS2|
-|[CS2ScreenMenuAPI](https://github.com/T3Marius/CS2ScreenMenuAPI)|*Not supported*|Driver.ScreenMenuAPI|
-|[CS2MenuManager](https://github.com/schwarper/CS2MenuManager)|*Not supported*|*Not supported*|
-|[WASDMenuAPI](https://github.com/Interesting-exe/WASDMenuAPI)|*Not supported*|*Not supported*|
-|[oscar-wos/Menu](https://github.com/oscar-wos/Menu)|*Not supported*|*Not supported*|
+| Menu system                 | Compatibility plugin  | Driver plugin         |
+|-----------------------------|-----------------------|-----------------------|
+| *Native support*            |                       |                       |
+| [SharpModMenu](ms1)         | *n/a*                 | *Native*              |
+| *Limited Support*           |                       |                       |
+| [CSS.MenuManager](ms2)      | Compat.CSSharp        | *Not supported*       |
+| [MenuManagerCS2](ms3)       | Compat.MenuManagerCS2 | Driver.MenuManagerCS2 |
+| [CS2ScreenMenuAPI](ms4)     | *Not supported*       | Driver.ScreenMenuAPI  |
+| *No Support*                |                       |                       |
+| [CS2MenuManager](ms5)       | *Not supported*       | *Not supported*       |
+| [WASDMenuAPI](ms6)          | *Not supported*       | *Not supported*       |
+| [oscar-wos/Menu](ms7)       | *Not supported*       | *Not supported*       |
+| [MenuManagerAPI](ms8)       | *Not supported*       | *Not supported*       |
+
+[ms1]: https://github.com/CSGALS/SharpModMenu
+[ms2]: https://docs.cssharp.dev/api/CounterStrikeSharp.API.Modules.Menu.MenuManager.html
+[ms3]: https://github.com/NickFox007/MenuManagerCS2
+[ms4]: https://github.com/T3Marius/CS2ScreenMenuAPI
+[ms5]: https://github.com/schwarper/CS2MenuManager
+[ms6]: https://github.com/Interesting-exe/WASDMenuAPI
+[ms7]: https://github.com/oscar-wos/Menu
+[ms8]: https://github.com/nickj609/MenuManagerAPI
 
 ## Where and what to download?
 
